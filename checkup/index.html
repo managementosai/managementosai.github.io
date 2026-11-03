@@ -252,7 +252,7 @@ var state=fresh();
 function el(html){ var d=document.createElement('div'); d.innerHTML=html; return d; }
 function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
 function axis(id){ for(var i=0;i<AXES.length;i++) if(AXES[i].id===id) return AXES[i]; }
-function signupUrl(){ if(!SIGNUP_URL) return FALLBACK_URL; return SIGNUP_URL+(SIGNUP_URL.indexOf('?')>-1?'&':'?')+'src=checkup'; }
+function signupUrl(){ if(!SIGNUP_URL) return FALLBACK_URL; return SIGNUP_URL+(SIGNUP_URL.indexOf('?')>-1?'&':'?')+'src=checkup#signup'; }
 function lvColor(pts){ return pts===3?'var(--mint)':(pts>=1?'var(--sun)':'var(--dim)'); }
 
 function render(){ app.innerHTML=''; if(state.i<0) return renderStart(); if(state.i>=Q.length) return renderResult(); renderQ(); }

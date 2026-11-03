@@ -9,7 +9,7 @@
 <!-- Превью для Telegram -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Что ИИ уже может сделать за менеджера">
-<meta property="og:description" content="Бесплатный онлайн-воркшоп: 2 часа, пять историй с живого предприятия, без технических подробностей.">
+<meta property="og:description" content="Бесплатный онлайн-воркшоп: 2 часа, шесть направлений с живого предприятия, без технических подробностей.">
 <meta property="og:image" content="https://managementosai.github.io/preview.jpg">
 <meta property="og:url" content="https://managementosai.github.io/">
 <meta property="og:image:width" content="1200">
@@ -150,18 +150,23 @@ p{margin:0;text-wrap:pretty}
 /* more */
 .fn{margin-top:12px;font-size:13px;color:var(--dim)}
 .more{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.panel-x{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:32px;display:grid;gap:24px;align-content:start;min-width:0}
+.panel-x{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:24px;min-width:0}
+.panel-x .px-note{margin-top:auto}
 .px-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:24px;align-items:start}
 .px-head h3{font-size:20px;margin-bottom:8px}
 .px-head p{color:var(--muted);font-size:15px}
 .px-big{display:grid;justify-items:center;min-width:88px;padding:12px 8px;border-radius:16px;background:rgba(79,227,193,.08);border:1px solid rgba(79,227,193,.3)}
 .px-big .cnt{font-family:var(--display);font-weight:600;font-size:44px;line-height:1;color:var(--mint);font-variant-numeric:tabular-nums}
 .px-big small{font-size:13px;color:var(--muted);margin-top:4px}
-.flow{display:grid;grid-template-columns:auto 24px minmax(0,1fr);gap:12px;align-items:center}
+.flow{display:grid;grid-template-columns:auto minmax(0,1fr);gap:36px;align-items:center}
 .src{display:grid;justify-items:center;gap:8px;text-align:center;font-size:13px;color:var(--muted);background:rgba(255,138,61,.08);border:1px solid rgba(255,138,61,.35);border-radius:16px;padding:16px 12px}
 .arrow{height:2px;background:linear-gradient(90deg,var(--accent),var(--mint));position:relative}
 .arrow::after{content:"";position:absolute;right:-1px;top:-4px;border:5px solid transparent;border-left:7px solid var(--mint);border-right:0}
-.outs{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.outs{list-style:none;margin:0;padding:0 0 0 0;display:grid;gap:8px;position:relative}
+.outs::before{content:"";position:absolute;left:-18px;top:22px;bottom:22px;width:2px;border-radius:2px;background:linear-gradient(180deg,var(--accent),var(--mint))}
+.outs li{position:relative}
+.outs li::before{content:"";position:absolute;left:-18px;top:50%;width:18px;height:2px;background:var(--mint);opacity:.7}
+.src{position:relative}.src::after{content:"";position:absolute;right:-36px;top:50%;width:18px;height:2px;background:var(--accent)}
 .outs li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;align-items:start;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13px;color:var(--dim);line-height:1.4}
 .outs li b{display:block;font-size:15px;font-weight:600;color:var(--fg);margin-bottom:2px}
 .dr{list-style:none;margin:0;padding:0;display:grid;gap:12px;position:relative}
@@ -169,7 +174,7 @@ p{margin:0;text-wrap:pretty}
 .dr li b{display:block;font-size:16px;color:var(--fg);margin-bottom:2px}
 .dn{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--on-accent);font-weight:600;font-size:14px}
 .px-note{font-size:13px;color:var(--dim);border-top:1px solid var(--line);padding-top:16px}
-.border{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:16px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--surface)}
+.border{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--surface)}
 .bcol{padding:24px;display:grid;gap:8px;align-content:start;border-right:1px solid var(--line)}
 .bcol:last-child{border-right:0}
 .bcol p{font-size:15px;color:var(--muted)}
@@ -218,7 +223,7 @@ p{margin:0;text-wrap:pretty}
 .next ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 .next li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;font-size:15px;color:var(--muted)}
 .next li::before{content:"";width:10px;height:10px;margin-top:8px;border-radius:50%;background:var(--mint)}
-.big10{font-family:var(--display);font-weight:600;font-size:60px;line-height:1;color:var(--mint)}
+.big10{font-family:var(--display);font-weight:600;font-size:52px;line-height:1;color:var(--mint)}
 
 /* faq */
 .faq{display:grid;gap:12px;max-width:820px}
@@ -230,10 +235,40 @@ summary::after{content:"+";color:var(--mint);font-size:22px;line-height:1;transi
 details[open] summary::after{transform:rotate(45deg)}
 details p{padding-bottom:20px;color:var(--muted)}
 
-/* final */
-.final{text-align:center;display:grid;justify-items:center;gap:24px;padding-block:96px}
-.final h2{max-width:760px}
-.final .lead{max-width:600px}
+/* pains list (mirrors case order) */
+.pains{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;border-top:1px solid var(--line)}
+.pains li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.pains h3{font-size:17px;margin-bottom:4px}
+.pains p{font-size:15px;color:var(--muted)}
+.pn{font-family:var(--mono);font-size:14px;color:var(--accent);padding-top:2px}
+.pn.sm{margin-left:auto;margin-right:4px;font-size:12px;color:var(--dim);padding:0}
+.terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px;font-size:14px;color:var(--dim)}
+.terms b{color:var(--mint);font-weight:600}
+/* plan */
+.plan{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;position:relative}
+.plan::before{content:"";position:absolute;left:0;right:0;top:15px;height:2px;background:linear-gradient(90deg,var(--accent),var(--mint));opacity:.5}
+.plan li{position:relative;display:grid;gap:8px;align-content:start;padding-top:48px}
+.plan .tm{position:absolute;top:0;left:0;font-family:var(--mono);font-size:13px;color:var(--on-accent);background:var(--mint);border-radius:999px;padding:6px 12px;line-height:1.3}
+.plan li:first-child .tm{background:var(--accent)}
+.plan p{font-size:15px;color:var(--muted)}
+.take{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px}
+.tk{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px 24px;display:grid;gap:6px;align-content:start;font-size:15px;color:var(--muted)}
+.tk b{color:var(--fg);font-size:16px}
+.tk:first-child{border-color:rgba(79,227,193,.45);background:linear-gradient(135deg,rgba(79,227,193,.10),rgba(79,227,193,.02))}
+/* signup */
+.final{text-align:left;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:48px;align-items:center;padding-block:96px}
+.fin-text{display:grid;gap:24px}
+.fsteps{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.fsteps li{display:grid;grid-template-columns:32px minmax(0,1fr);gap:14px;align-items:center;color:var(--muted);font-size:16px}
+.contact{background:linear-gradient(180deg,var(--surface2),var(--surface));border:1px solid var(--line);border-radius:28px;padding:32px;display:grid;gap:14px;justify-items:center;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.contact img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid rgba(79,227,193,.45)}
+.c-name{display:grid;gap:2px;margin-bottom:6px}
+.c-name b{font-size:19px}
+.c-name small{color:var(--dim);font-size:14px}
+.contact .btn{width:100%;font-size:15px;padding:14px 18px}
+.contact .btn.ghost{font-size:14px;word-break:break-all}
+.big10 small{font-family:var(--body);font-size:16px;font-weight:500;color:var(--muted);margin-left:4px}
+.px-big .pre-s{margin:0 0 2px}
 footer{border-top:1px solid var(--line);padding-block:32px 48px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:14px;color:var(--dim)}
 footer a{color:var(--muted)}
 
@@ -253,6 +288,10 @@ footer a{color:var(--muted)}
   .test,.next{grid-template-columns:minmax(0,1fr);padding:32px}
   .author{grid-template-columns:minmax(0,1fr);gap:24px}
   .author img{width:160px;height:160px}
+  .plan{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:32px}.plan::before{display:none}
+  .take{grid-template-columns:minmax(0,1fr)}
+  .final{grid-template-columns:minmax(0,1fr);gap:32px;padding-block:72px}
+  .contact{max-width:420px}
 }
 @media (max-width:760px){
   .links,.nav .bar>.btn{display:none}
@@ -265,7 +304,10 @@ footer a{color:var(--muted)}
   .bcol{border-right:0;border-bottom:1px solid var(--line)}.bcol:last-child{border-bottom:0}
   .panel-x{padding:20px;border-radius:20px}
   .px-head{grid-template-columns:minmax(0,1fr)}.px-big{justify-self:start;grid-auto-flow:column;align-items:baseline;gap:8px;padding:8px 14px}
-  .flow{grid-template-columns:minmax(0,1fr)}.arrow{display:none}.src{grid-auto-flow:column;justify-content:start}
+  .flow{grid-template-columns:minmax(0,1fr);gap:16px}.src{grid-auto-flow:column;justify-content:start}.src::after{display:none}
+  .outs{padding-left:18px}.outs::before{left:0}.outs li::before{left:-18px}
+  .pains,.terms{grid-template-columns:minmax(0,1fr)}
+  .plan{grid-template-columns:minmax(0,1fr);row-gap:24px}
   .num{padding:16px}.num b{font-size:28px}
   .stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
   .stat{padding:12px}.stat b{font-size:24px}
@@ -294,7 +336,7 @@ footer a{color:var(--muted)}
       <a href="#test">Тест</a>
       <a href="#faq">Вопросы</a>
     </nav>
-    <a class="btn sm js-signup" href="https://t.me/ecmen11" target="_blank" rel="noopener">Записаться</a>
+    <a class="btn sm" href="#signup">Записаться</a>
     <button class="menu-btn" aria-expanded="false" aria-controls="panel" aria-label="Открыть меню"><i></i><i></i><i></i></button>
   </div>
 </header>
@@ -303,7 +345,7 @@ footer a{color:var(--muted)}
   <a href="#author">Кто ведёт</a>
   <a href="#test">Пройти тест</a>
   <a href="#faq">Вопросы</a>
-  <a href="https://t.me/ecmen11" class="js-signup" target="_blank" rel="noopener" style="color:var(--accent)">Записаться →</a>
+  <a href="#signup" style="color:var(--accent)">Записаться →</a>
 </div>
 
 <main id="main">
@@ -316,7 +358,7 @@ footer a{color:var(--muted)}
       <h1 id="h1">Что ИИ уже может сделать <span class="hl">за менеджера</span></h1>
       <p class="lead">Два часа без технических подробностей: что ИИ уже снимает с руководителя, как это работает на предприятии на 1500 сотрудников и с чего начать в понедельник.</p>
       <div class="hero-cta">
-        <a class="btn js-signup" href="https://t.me/ecmen11" target="_blank" rel="noopener">Записаться бесплатно</a>
+        <a class="btn" href="#signup">Записаться бесплатно</a>
         <a class="btn ghost test-btn" href="checkup/">
           <svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><polygon points="16,4 27.4,12.3 23,25.7 9,25.7 4.6,12.3" fill="none" stroke="#4fe3c1" stroke-width="2.4" stroke-linejoin="round"/><polygon points="16,9 22.5,14 20,21.5 12.5,20.5 9.5,14.5" fill="rgba(255,138,61,.45)" stroke="#ff8a3d" stroke-width="1.6" stroke-linejoin="round"/></svg>
           Проверить свой уровень <span class="mins">5 мин</span>
@@ -337,27 +379,45 @@ footer a{color:var(--muted)}
   </section>
 
   <div class="nums" aria-label="ИИ на предприятии в цифрах">
-    <div class="num rv"><b><span class="cnt" data-to="26">26</span></b><small>ИИ-ассистентов работают на предприятии каждый день</small></div>
-    <div class="num rv"><b><span class="cnt" data-to="100">100</span><span>%</span></b><small>разговоров с клиентами оценивает ИИ, а не выборочная проверка</small></div>
-    <div class="num rv"><b>~<span class="cnt" data-to="150">150</span></b><small>протоколов в неделю сверяет агент контроля поручений</small></div>
-    <div class="num rv"><b>50→<span class="cnt" data-to="20" data-from="50">20</span><span>%</span></b><small>уход новичков в первые месяцы после перестройки адаптации*</small></div>
+    <div class="num rv"><b><span class="cnt" data-to="26">26</span></b><small>ИИ-ассистентов и агентов работают на предприятии каждый день</small></div>
+    <div class="num rv"><b><span class="cnt" data-to="100">100</span><span>%</span></b><small>разговоров с клиентами проверяет ИИ. Раньше слушали выборочно</small></div>
+    <div class="num rv"><b>~<span class="cnt" data-to="150">150</span></b><small>протоколов и карточек поручений агент сверяет к началу каждой недели</small></div>
+    <div class="num rv"><b>50→<span class="cnt" data-to="20" data-from="50">20</span><span>%</span></b><small>уход новичков в первые 30–60 дней работы*</small></div>
   </div>
-  <p class="fn">* Результат перестройки всей системы адаптации, не только ИИ.</p>
+  <p class="fn">* После перестройки всей системы адаптации, не только за счёт ИИ.</p>
 
-  <!-- PAINS -->
+  <!-- PAINS: same order as the cases below -->
   <section aria-labelledby="pains">
     <div class="head rv">
       <div class="kicker">Знакомо?</div>
       <h2 id="pains">Куда уходит <span class="hl">день менеджера</span></h2>
     </div>
-    <div class="grid3">
-      <div class="card rv"><span class="lab">Документы</span><h3>Собрать, свести, переписать</h3><p>Регламенты, инструкции, справки. Половина времени уходит на то, чтобы найти и склеить куски.</p></div>
-      <div class="card rv"><span class="lab">Контроль</span><h3>Проверить, кто что сделал</h3><p>Поручения, сроки, статусы. Чем больше людей, тем больше ручных сверок.</p></div>
-      <div class="card rv"><span class="lab">Совещания</span><h3>Записать и не потерять</h3><p>Протоколы и договорённости. Через неделю никто не помнит, что решили и кто отвечает.</p></div>
-      <div class="card rv"><span class="lab">Отчёты</span><h3>Собрать цифры к сроку</h3><p>Данные из разных систем, сводные таблицы, пояснения. Каждый месяц одно и то же.</p></div>
-      <div class="card rv"><span class="lab">Люди</span><h3>Ввести новичка в курс дела</h3><p>Одни и те же объяснения по кругу. Новичок путается, наставник устаёт.</p></div>
-      <div class="card rv"><span class="lab">Решения</span><h3>Разобраться и не ошибиться</h3><p>Информации много, времени мало. Решение часто принимается «на глаз».</p></div>
+    <ol class="pains">
+      <li class="rv"><span class="pn">01</span><div><h3>Узнать, как говорят с клиентами</h3><p>Прослушать удаётся единицы разговоров. Об остальных узнаёте из жалоб.</p></div></li>
+      <li class="rv"><span class="pn">02</span><div><h3>Записать совещание и не потерять</h3><p>Через неделю никто не помнит, что решили и кто отвечает.</p></div></li>
+      <li class="rv"><span class="pn">03</span><div><h3>Проверить, кто что сделал</h3><p>Поручения, сроки, статусы. Чем больше людей, тем больше ручных сверок.</p></div></li>
+      <li class="rv"><span class="pn">04</span><div><h3>Найти ответ в регламентах</h3><p>Инструкции и приказы разбросаны по папкам. Проще спросить коллегу и отвлечь его.</p></div></li>
+      <li class="rv"><span class="pn">05</span><div><h3>Ввести новичка в курс дела</h3><p>Одни и те же объяснения по кругу. Новичок путается, наставник устаёт.</p></div></li>
+      <li class="rv"><span class="pn">06</span><div><h3>Собрать цифры к сроку</h3><p>Данные из разных систем, сводные таблицы, пояснения. Каждый месяц одно и то же.</p></div></li>
+    </ol>
+  </section>
+
+  <!-- WHAT CHANGED -->
+  <section aria-labelledby="how">
+    <div class="head rv">
+      <div class="kicker">Что изменилось за последний год</div>
+      <h2 id="how">ИИ из справочника <span class="hl">стал сотрудником</span></h2>
     </div>
+    <div class="vs">
+      <div class="card rv"><span class="lab">Было: чат</span><h3>Задаёте вопрос, получаете ответ</h3><p>Дальше всё делаете сами: копируете, проверяете, переделываете.</p></div>
+      <div class="card rv"><span class="lab">Стало: агент</span><h3>Даёте материалы и ставите задачу</h3><p>Агент сам открывает файлы, собирает документ, сводит таблицу и кладёт результат в папку.</p></div>
+    </div>
+    <div class="how">
+      <div class="card rv"><h3>Показываете, где лежат материалы</h3><p>Папка с документами, таблицы, записи совещаний. Ничего не нужно переносить и копировать.</p></div>
+      <div class="card rv"><h3>Объясняете задачу словами</h3><p>Как новому сотруднику: что получить, по каким правилам и куда положить. Можно голосом.</p></div>
+      <div class="card rv"><h3>Забираете результат</h3><p>Документ, отчёт или таблица ждут в вашей папке. Вы проверяете и принимаете решение.</p></div>
+    </div>
+    <p class="terms rv"><span><b>Ассистент</b> — ИИ, настроенный под одну задачу и ваши правила.</span><span><b>Агент</b> — ИИ, который сам работает с вашими файлами и доводит задачу до результата.</span></p>
   </section>
 
   <!-- TAGLINE -->
@@ -368,22 +428,22 @@ footer a{color:var(--muted)}
   <!-- WORKS -->
   <section id="program" aria-labelledby="works">
     <div class="head rv">
-      <div class="kicker">Программа · 2 часа · не теория</div>
+      <div class="kicker">Что покажу · не теория</div>
       <h2 id="works">Что уже работает <span class="hl">на живом предприятии</span></h2>
-      <p class="lead">На воркшопе покажу каждое направление: как было, что делает ИИ и что получилось. Все примеры из компании на 1500 сотрудников и 6 филиалов.</p>
+      <p class="lead">Поэтому начинали не с ИИ, а с конкретной задачи конкретного человека. На воркшопе покажу каждое направление: как было, что делает ИИ и что получилось.</p>
     </div>
     <div class="works">
-      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span class="st-ok">работает</span></div>
+      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span class="pn sm">01</span><span class="st-ok">работает</span></div>
         <h3>Разговоры с клиентами</h3><p>Каждый разговор во всех филиалах записывается, переводится в текст и оценивается ИИ по стандартам общения. Персональные данные вырезаются <b>до</b> анализа.</p></article>
-      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><span class="st-ok">работает</span></div>
+      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><span class="pn sm">02</span><span class="st-ok">работает</span></div>
         <h3>Совещания и встречи</h3><p><b><span class="cnt" data-to="8">8</span> ИИ-ассистентов</b> разбирают записи, проверяют соблюдение регламента и составляют протокол. Руководитель получает PDF на почту.</p></article>
-      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span><span class="st-ok">работает</span></div>
+      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span><span class="pn sm">03</span><span class="st-ok">работает</span></div>
         <h3>Контроль поручений</h3><p>Агент сверяет поручения с наступившим сроком и к началу недели готовит отчёт: что сделано, что просрочено и почему.</p></article>
-      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 4.5a3 3 0 0 1 0 6M18 20a6 6 0 0 0-3-5.2"/></svg></span><span class="st-ok">работает</span></div>
-        <h3>Помощники в каждом отделе</h3><p><b><span class="cnt" data-to="16">16</span> ассистентов</b> с инструкциями и базами знаний отделов. Для глубоких исследований есть ИИ-кабинет, где ответы нескольких ИИ сверяются между собой.</p></article>
-      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V6a2 2 0 0 1 2-2h12v15H6a2 2 0 0 0-2 2"/><path d="M8 8h6M8 12h6"/></svg></span><span class="st-ok">работает</span></div>
-        <h3>Адаптация новичков</h3><p>Из разрозненных приказов собран единый регламент, по нему обучение и портал. Уход новичков снизился <b>с 50% до <span class="cnt" data-to="20" data-from="50">20</span>%</b>.</p></article>
-      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span class="st-dev">в разработке</span></div>
+      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 4.5a3 3 0 0 1 0 6M18 20a6 6 0 0 0-3-5.2"/></svg></span><span class="pn sm">04</span><span class="st-ok">работает</span></div>
+        <h3>Помощники в каждом отделе</h3><p><b><span class="cnt" data-to="16">16</span> ассистентов</b> с инструкциями и базами знаний отделов. Для сложных вопросов есть ИИ-кабинет, где ответы нескольких ИИ сверяются между собой.</p></article>
+      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V6a2 2 0 0 1 2-2h12v15H6a2 2 0 0 0-2 2"/><path d="M8 8h6M8 12h6"/></svg></span><span class="pn sm">05</span><span class="st-ok">работает</span></div>
+        <h3>Адаптация новичков</h3><p>Из разрозненных приказов собран единый регламент, по нему обучение и портал. Новичок находит ответ сам, наставник объясняет только сложное.</p></article>
+      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span class="pn sm">06</span><span class="st-dev">в разработке</span></div>
         <h3>Управленческая аналитика</h3><p>Данные из учётных систем собираются в интерактивные отчёты с кликабельными цифрами. Брифы для правления готовятся с помощью ИИ.</p></article>
     </div>
   </section>
@@ -398,11 +458,10 @@ footer a{color:var(--muted)}
       <article class="panel-x rv">
         <div class="px-head">
           <div class="px-big"><span class="cnt" data-to="5">5</span><small>форматов</small></div>
-          <div><h3>Один документ — целый курс обучения</h3><p>Загружаете регламент или инструкцию, и ИИ сам делает из него учебные материалы для сотрудников. Без методиста и студии.</p></div>
+          <div><h3>Один документ — целый курс обучения</h3><p>Загружаете регламент или инструкцию, и ИИ делает из него учебные материалы. Черновик за минуты, методисту остаётся проверить.</p></div>
         </div>
         <div class="flow">
           <div class="src"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg><span>Ваш документ</span></div>
-          <div class="arrow" aria-hidden="true"></div>
           <ul class="outs">
             <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4fe3c1" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9.5v5l4.5-2.5z"/></svg><span><b>Видеопрезентация</b>слайды и схемы по ключевым темам</span></li>
             <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4fe3c1" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg><span><b>Аудиоподкаст</b>живой разговор двух ведущих, можно слушать в дороге</span></li>
@@ -415,18 +474,25 @@ footer a{color:var(--muted)}
 
       <article class="panel-x rv">
         <div class="px-head">
-          <div class="px-big"><span class="cnt" data-to="20">20</span><small>минут</small></div>
-          <div><h3>Глубокое исследование уровня эксперта</h3><p>Режим глубокого исследования за 10–20 минут делает то, на что раньше уходили недели: находит, читает и сравнивает источники.</p></div>
+          <div class="px-big"><small class="pre-s">до</small><span class="cnt" data-to="20">20</span><small>минут</small></div>
+          <div><h3>Глубокое исследование уровня эксперта</h3><p>За 10–20 минут ИИ делает то, на что у аналитика уходили дни: находит, читает и сравнивает источники.</p></div>
         </div>
         <ol class="dr">
           <li><span class="dn">1</span><div><b>Ваш вопрос</b>Как другие решают нашу проблему? Что изменилось на рынке? Какие есть лучшие практики?</div></li>
-          <li><span class="dn">2</span><div><b>ИИ изучает сотни источников</b>Сам находит, читает и сравнивает материалы, отбрасывает слабые.</div></li>
+          <li><span class="dn">2</span><div><b>ИИ изучает десятки и сотни источников</b>Сам находит, читает и сравнивает материалы, отбрасывает слабые.</div></li>
           <li><span class="dn">3</span><div><b>Готовый разбор</b>Причины, варианты решения, риски и опыт других компаний. Каждый вывод со ссылкой на источник.</div></li>
         </ol>
         <p class="px-note">Ключевые цифры перед решением всё равно стоит открыть и проверить самому.</p>
       </article>
     </div>
+  </section>
 
+  <!-- BORDER -->
+  <section aria-labelledby="borderh">
+    <div class="head rv">
+      <div class="kicker">Честно о пределах</div>
+      <h2 id="borderh">Где граница: <span class="hl">что можно доверить ИИ</span></h2>
+    </div>
     <div class="border rv">
       <div class="bcol ok"><span class="blab">Делаете сами</span><p>Документы и регламенты, разбор материалов, отчёты, обучение, личные помощники, прототип системы и задание для программиста.</p></div>
       <div class="bcol mid"><span class="blab">Нужен программист</span><p>Когда система работает на всю компанию, подключена к рабочим базам и должна работать без сбоев.</p></div>
@@ -434,48 +500,22 @@ footer a{color:var(--muted)}
     </div>
   </section>
 
-  <!-- HOW -->
-  <section aria-labelledby="how">
+  <!-- PLAN -->
+  <section aria-labelledby="planh">
     <div class="head rv">
-      <div class="kicker">За последний год</div>
-      <h2 id="how">От справочника <span class="hl">к сотруднику</span></h2>
+      <div class="kicker">Как пройдут два часа</div>
+      <h2 id="planh">План встречи и <span class="hl">с чем вы уйдёте</span></h2>
     </div>
-    <div class="vs">
-      <div class="card rv"><span class="lab">Было: чат</span><h3>Задаёте вопрос, получаете ответ</h3><p>Дальше всё делаете сами: копируете, проверяете, переделываете.</p></div>
-      <div class="card rv"><span class="lab">Стало: агент</span><h3>Даёте материалы и ставите задачу</h3><p>Агент сам открывает файлы, собирает документ, сводит таблицу и кладёт результат в папку.</p></div>
-    </div>
-    <div class="how">
-      <div class="card rv"><h3>Показываете, где лежат материалы</h3><p>Папка с документами, таблицы, записи совещаний. Ничего не нужно переносить и копировать.</p></div>
-      <div class="card rv"><h3>Говорите голосом, что сделать</h3><p>Как объясняли бы новому сотруднику: что получить, по каким правилам и куда положить.</p></div>
-      <div class="card rv"><h3>Забираете результат</h3><p>Документ, отчёт или таблица ждут в вашей папке. Вы проверяете и принимаете решение.</p></div>
-    </div>
-  </section>
-
-  <!-- TEST -->
-  <section id="test" aria-labelledby="testh">
-    <div class="test rv">
-      <div class="t">
-        <div class="kicker">Самопроверка</div>
-        <h2 id="testh">Насколько вы готовы <span class="hl">работать с ИИ?</span></h2>
-        <p class="muted">13 вопросов, до 5 минут. В конце диаграмма по пяти направлениям: постановка задач, агенты, большая работа, безопасность и рынок труда. Ответы никуда не отправляются.</p>
-        <div><a class="btn ghost" href="checkup/">Пройти тест</a></div>
-      </div>
-      <svg class="scan" viewBox="0 0 220 220" aria-hidden="true">
-        <defs>
-          <linearGradient id="sw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4fe3c1" stop-opacity="0"/><stop offset="1" stop-color="#4fe3c1" stop-opacity=".5"/></linearGradient>
-          <linearGradient id="sf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a3d" stop-opacity=".45"/><stop offset="1" stop-color="#4fe3c1" stop-opacity=".35"/></linearGradient>
-        </defs>
-        <g fill="none" stroke="#2c3d66">
-          <polygon points="110,82 136.6,101.3 126.5,132.7 93.5,132.7 83.4,101.3"/>
-          <polygon points="110,58 159.5,94 140.6,152.1 79.4,152.1 60.5,94"/>
-          <polygon points="110,34 182.3,86.5 154.7,171.5 65.3,171.5 37.7,86.5"/>
-          <polygon points="110,14 201.3,80.3 166.4,187.7 53.6,187.7 18.7,80.3"/>
-          <path d="M110 110L110 14M110 110L201.3 80.3M110 110L166.4 187.7M110 110L53.6 187.7M110 110L18.7 80.3"/>
-        </g>
-        <polygon points="110,43 162,93 140,152 87,141 55,92" fill="url(#sf)" stroke="#ff8a3d" stroke-width="2" stroke-linejoin="round"/>
-        <g class="sweep"><path d="M110 110 L206 110 A96 96 0 0 0 189.2 55.8 Z" fill="url(#sw)"/><line x1="110" y1="110" x2="206" y2="110" stroke="#4fe3c1" stroke-width="1.5"/></g>
-        <g fill="#0c1528" stroke="#ffd166" stroke-width="2"><circle cx="110" cy="43" r="4"/><circle cx="162" cy="93" r="4"/><circle cx="140" cy="152" r="4"/><circle cx="87" cy="141" r="4"/><circle cx="55" cy="92" r="4"/></g>
-      </svg>
+    <ol class="plan">
+      <li class="rv"><span class="tm">0:00</span><h3>Что изменилось</h3><p>Чем агент отличается от чата и почему это важно менеджеру.</p></li>
+      <li class="rv"><span class="tm">0:20</span><h3>Шесть кейсов вживую</h3><p>Как было, что делает ИИ, что получилось. На экране, без слайдов-обещаний.</p></li>
+      <li class="rv"><span class="tm">1:10</span><h3>Инструменты и граница</h3><p>Обучение из документа, глубокое исследование и что нельзя доверять ИИ.</p></li>
+      <li class="rv"><span class="tm">1:40</span><h3>С чего начать и вопросы</h3><p>Первые шаги на понедельник и ответы на ваши вопросы.</p></li>
+    </ol>
+    <div class="take rv">
+      <div class="tk"><b>Вы уйдёте с пониманием</b><span>какие из ваших задач ИИ может взять уже сейчас, а какие пока нет</span></div>
+      <div class="tk"><b>Для кого</b><span>руководители и менеджеры любой сферы, которые с ИИ пока на «вы» или пользуются им только как чатом</span></div>
+      <div class="tk"><b>Не для кого</b><span>для программистов и тех, кто ищет технические подробности</span></div>
     </div>
   </section>
 
@@ -486,12 +526,12 @@ footer a{color:var(--muted)}
       <div class="t">
         <div class="kicker rv">Кто ведёт</div>
         <h2 id="authorh" class="rv">Александр Мартынов</h2>
-        <div class="certs rv"><span>Сертифицированный HR-бизнес-партнёр (AIHR)</span><span>Эксперт по клиентоцентричности</span><span>Преподаватель курса по клиентскому опыту</span></div>
+        <div class="certs rv"><span>HR Business Partner 2.0 (AIHR)</span><span>Certified Customer Centricity Expert (Integria)</span><span>Преподаватель курса по клиентскому опыту</span></div>
         <p class="muted rv">Генеральный директор компании, в которой больше 1500 сотрудников и 6 филиалов. Руковожу командами с 2002 года, два MBA: РАНХиГС и РГУ им. Губкина. Все примеры на воркшопе взяты из работы моей компании.</p>
         <div class="stats rv">
           <div class="stat"><b><span class="cnt" data-to="20">20</span>+</b><small>лет в управлении</small></div>
-          <div class="stat"><b><span class="cnt" data-to="1500">1500</span>+</b><small>сотрудников</small></div>
-          <div class="stat"><b><span class="cnt" data-to="26">26</span></b><small>ИИ-ассистентов в работе</small></div>
+          <div class="stat"><b><span class="cnt" data-to="15">15</span></b><small>лет преподаю</small></div>
+          <div class="stat"><b><span class="cnt" data-to="600">600</span>+</b><small>обученных специалистов</small></div>
         </div>
         <div class="np rv"><span class="lab">Я не программист</span><p>Всё, что я покажу, сделано обычным пользователем ИИ. Если получилось у меня, получится и у вас. А там, где без программиста не обойтись, я так и скажу.</p></div>
       </div>
@@ -507,30 +547,56 @@ footer a{color:var(--muted)}
     <div class="revs">
       <div class="rev rv"><p>«Сделано с такой душой и такими глубокими знаниями, что <b>сразу хочется бежать и применять всё на практике</b>. Очень структурированно, с примерами и разбором кейсов.»</p><div class="who">Евгения<small>Директор по клиентскому опыту, крупная розничная сеть (Москва)</small></div></div>
       <div class="rev rv"><p>«Тема востребована. У Александра прекрасно получается подать информацию доступным языком, <b>можно сразу нести в работу</b>. Ценно, что он делится реальными практиками применения ИИ у себя в компании.»</p><div class="who">Лидия<small>IT-специалист (Москва)</small></div></div>
-      <div class="rev rv"><p>«На работе нам дали платный доступ в ChatGPT и сказали «пользуйтесь», <b>а как — не объяснили</b>. Решила дождаться воркшопа и убедилась, что решение было правильным.»</p><div class="who">Ольга</div></div>
+      <div class="rev rv"><p>«На работе нам дали платный доступ в ChatGPT и сказали «пользуйтесь», <b>а как — не объяснили</b>. Решила дождаться воркшопа и убедилась, что решение было правильным.»</p><div class="who">Ольга<small>Участница воркшопа</small></div></div>
       <div class="rev rv"><p>«<b>На 100% практично и применимо</b>: не только теория, но и инструкции, как этим пользоваться.»</p><div class="who">Константин<small>Фаундер бизнеса</small></div></div>
       <div class="rev rv"><p>«<b>Сразу комплексные решения</b>, а не отдельные инструменты для узких задач. Рекомендую!»</p><div class="who">Ирина<small>Эксперт по NPS</small></div></div>
-      <div class="rev rv"><p>«Поняла, что я в числе тех 85% пользователей, которые используют ИИ обывательски. Для многих практическое применение ИИ кажется далёким будущим, а <b>для вас это реальность</b>.»</p><div class="who">Екатерина</div></div>
+      <div class="rev rv"><p>«Поняла, что пользуюсь ИИ обывательски. Для многих практическое применение ИИ кажется далёким будущим, а <b>для вас это реальность</b>.»</p><div class="who">Екатерина<small>Участница воркшопа</small></div></div>
+    </div>
+  </section>
+
+  <!-- TEST -->
+  <section id="test" aria-labelledby="testh">
+    <div class="test rv">
+      <div class="t">
+        <div class="kicker">Ещё не решили? Начните с теста</div>
+        <h2 id="testh">Насколько вы готовы <span class="hl">работать с ИИ?</span></h2>
+        <p class="muted">13 вопросов, до 5 минут. В конце диаграмма по пяти направлениям: постановка задач, агенты, большая работа, безопасность и рынок труда. Ответы никуда не отправляются.</p>
+        <div><a class="btn ghost" href="checkup/">Пройти тест</a></div>
+      </div>
+      <svg class="scan" viewBox="0 0 220 220" aria-hidden="true">
+        <defs>
+          <linearGradient id="sw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4fe3c1" stop-opacity="0"/><stop offset="1" stop-color="#4fe3c1" stop-opacity=".45"/></linearGradient>
+          <linearGradient id="sf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a3d" stop-opacity=".45"/><stop offset="1" stop-color="#4fe3c1" stop-opacity=".35"/></linearGradient>
+          <clipPath id="pent"><polygon points="110,14 201.3,80.3 166.4,187.7 53.6,187.7 18.7,80.3"/></clipPath>
+        </defs>
+        <g clip-path="url(#pent)"><g class="sweep"><path d="M110 110 L210 110 A100 100 0 0 0 192 52 Z" fill="url(#sw)"/></g></g>
+        <g fill="none" stroke="#2c3d66">
+          <polygon points="110,82 136.6,101.3 126.5,132.7 93.5,132.7 83.4,101.3"/>
+          <polygon points="110,58 159.5,94 140.6,152.1 79.4,152.1 60.5,94"/>
+          <polygon points="110,34 182.3,86.5 154.7,171.5 65.3,171.5 37.7,86.5"/>
+          <polygon points="110,14 201.3,80.3 166.4,187.7 53.6,187.7 18.7,80.3"/>
+          <path d="M110 110L110 14M110 110L201.3 80.3M110 110L166.4 187.7M110 110L53.6 187.7M110 110L18.7 80.3"/>
+        </g>
+        <polygon points="110,43 162,93 140,152 87,141 55,92" fill="url(#sf)" stroke="#ff8a3d" stroke-width="2" stroke-linejoin="round"/>
+        <g fill="#0c1528" stroke="#ffd166" stroke-width="2"><circle cx="110" cy="43" r="4"/><circle cx="162" cy="93" r="4"/><circle cx="140" cy="152" r="4"/><circle cx="87" cy="141" r="4"/><circle cx="55" cy="92" r="4"/></g>
+      </svg>
     </div>
   </section>
 
   <!-- NEXT -->
   <section aria-labelledby="nexth">
     <div class="next rv">
-      <div style="display:grid;gap:16px">
+      <div style="display:grid;gap:16px;align-content:start">
         <div class="kicker">Для тех, кто хочет дальше</div>
-        <h2 id="nexth">Практический воркшоп <span class="hl">«ИИ в работе менеджера: от чата к агентам»</span></h2>
-        <p class="muted">После бесплатного воркшопа можно пойти дальше. До уровня уверенного пользователя — до 10 часов практики на реальных рабочих задачах, без программирования. Подробности расскажу в конце бесплатного воркшопа.</p>
-        <div class="big10">≤ <span class="cnt" data-to="10">10</span> ч</div>
+        <div class="big10">≤ <span class="cnt" data-to="10">10</span> ч <small>практики</small></div>
+        <h2 id="nexth">Интенсив <span class="hl" style="white-space:nowrap">«От чата</span> <span class="hl" style="white-space:nowrap">к агентам»</span></h2>
+        <p class="muted">Следующий шаг после бесплатного воркшопа: до уровня уверенного пользователя на ваших рабочих задачах, без программирования. Условия расскажу в конце бесплатного воркшопа.</p>
       </div>
       <ul>
-        <li>Как поручать ИИ работу целиком, а не только задавать вопросы</li>
-        <li>Агенты: работа с вашими файлами и папками</li>
-        <li>Большая работа целиком: от груды документов до регламента, прототипа и задания для программиста</li>
-        <li>Свой помощник на навыке для работы и для себя</li>
-        <li>Безопасность, проверка ответов и готовый регламент использования ИИ</li>
-        <li>Свой сайт: от идеи до ссылки</li>
-        <li>Месяц сопровождения после занятий</li>
+        <li>Поручать ИИ работу целиком: агенты, ваши файлы и папки</li>
+        <li>Большая работа: от груды документов до регламента, прототипа и задания программисту</li>
+        <li>Свой помощник под вашу задачу, проверка ответов и регламент безопасного использования ИИ</li>
+        <li>Свой сайт от идеи до ссылки и месяц сопровождения после занятий</li>
       </ul>
     </div>
   </section>
@@ -543,44 +609,50 @@ footer a{color:var(--muted)}
     </div>
     <div class="faq">
       <details class="rv"><summary>Сколько стоит участие?</summary><p>Бесплатно. Нужно только записаться, чтобы получить ссылку на Zoom.</p></details>
-      <details class="rv"><summary>Когда ближайший воркшоп?</summary><p>Воркшопы проходят регулярно. Напишите в Telegram, и мы пришлём ближайшую дату и ссылку на Zoom.</p></details>
+      <details class="rv"><summary>Когда ближайший воркшоп?</summary><p>Воркшопы проходят регулярно. Позвоните или напишите Анастасии: она сообщит ближайшую дату и пришлёт ссылку на Zoom.</p></details>
       <details class="rv"><summary>Нужно ли что-то устанавливать или покупать?</summary><p>Нет. Достаточно зайти в Zoom с компьютера или телефона. Я показываю всё на экране.</p></details>
       <details class="rv"><summary>Я не технарь. Мне будет понятно?</summary><p>Да. Воркшоп для менеджеров любого уровня, которые с ИИ пока на «вы». Никакого кода и технических подробностей. Главный навык здесь не технический: умение объяснить задачу, которое у хорошего менеджера уже есть.</p></details>
-      <details class="rv"><summary>Подойдёт ли это для моей сферы?</summary><p>Примеры взяты из работы большого предприятия: документы, контроль, совещания, отчёты, обучение, решения. Эти задачи есть у руководителя в любой отрасли.</p></details>
-      <details class="rv"><summary>Это продажа под видом обучения?</summary><p>Нет. Два часа полезного содержания, которое можно применять сразу. В конце я коротко расскажу о практическом воркшопе для тех, кто хочет дальше. Решать вам.</p></details>
-      <details class="rv"><summary>Безопасно ли давать ИИ рабочие данные?</summary><p>На предприятии это решено так: есть регламент работы с ИИ, персональные данные вырезаются до отправки запроса, а решение и ответственность всегда остаются за человеком. Сейчас в разработке собственные ИИ-модели, которые работают без выхода в интернет. На воркшопе разберём, какие данные можно давать ИИ, а какие нельзя.</p></details>
+      <details class="rv"><summary>Подойдёт ли это для моей сферы?</summary><p>Примеры взяты из работы большого предприятия: клиенты, совещания, поручения, документы, обучение, отчёты. Эти задачи есть у руководителя в любой отрасли.</p></details>
+      <details class="rv"><summary>Это продажа под видом обучения?</summary><p>Нет. Два часа полезного содержания, которое можно применять сразу. В конце я коротко расскажу об интенсиве для тех, кто хочет дальше. Решать вам.</p></details>
+      <details class="rv"><summary>Безопасно ли давать ИИ рабочие данные?</summary><p>На предприятии это решено так: есть регламент работы с ИИ, персональные данные вырезаются до отправки запроса, а решение и ответственность всегда остаются за человеком. Сейчас разворачиваем локальные ИИ-модели на собственных серверах, без выхода в интернет. На воркшопе разберём, какие данные можно давать ИИ, а какие нельзя.</p></details>
     </div>
   </section>
 
-  <!-- FINAL -->
-  <section class="final" aria-labelledby="finalh">
-    <div class="kicker">Бесплатно · 2 часа · Zoom</div>
-    <h2 id="finalh">Два часа, после которых понятно, <span class="hl">с чего начать</span></h2>
-    <p class="lead">Напишите в Telegram «Хочу на воркшоп». Пришлём ближайшую дату и ссылку на Zoom.</p>
-    <a class="btn js-signup" href="https://t.me/ecmen11" target="_blank" rel="noopener">Записаться на бесплатный воркшоп</a>
+  <!-- SIGNUP -->
+  <section class="final" id="signup" aria-labelledby="finalh">
+    <div class="fin-text">
+      <div class="kicker">Бесплатно · 2 часа · Zoom</div>
+      <h2 id="finalh">Два часа, после которых понятно, <span class="hl">с чего начать</span></h2>
+      <ol class="fsteps">
+        <li><span class="dn">1</span>Позвоните или напишите Анастасии</li>
+        <li><span class="dn">2</span>Она сообщит ближайшую дату и пришлёт ссылку на Zoom</li>
+        <li><span class="dn">3</span>Подключаетесь в назначенное время</li>
+      </ol>
+    </div>
+    <div class="contact rv">
+      <img src="contact.jpg" alt="Анастасия Ермолаева" width="96" height="96" loading="lazy">
+      <div class="c-name"><b>Анастасия Ермолаева</b><small>Запись на воркшоп и вопросы</small></div>
+      <a class="btn js-call" href="tel:+79853664408"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>+7 985 366-44-08</a>
+      <a class="btn ghost js-mail" href="mailto:nastya@happinessinaction.ru"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>nastya@happinessinaction.ru</a>
+    </div>
   </section>
 
   <footer>
     <span>Александр Мартынов, 2026</span>
-    <span>Вопросы: <a href="https://t.me/ecmen11" target="_blank" rel="noopener">@ecmen11</a> в Telegram</span>
-    <!-- TODO: ссылка на политику обработки персональных данных, когда появится форма записи -->
+    <span>Запись: <a href="tel:+79853664408">+7 985 366-44-08</a> · <a class="js-mail" href="mailto:nastya@happinessinaction.ru">nastya@happinessinaction.ru</a></span>
+    <!-- TODO: ссылка на политику обработки персональных данных, если появится форма записи -->
   </footer>
 </div>
 </main>
 
 <script>
 (function(){
-  /* ---------- НАСТРОЙКИ ----------
-     SIGNUP_URL — куда ведут кнопки «Записаться». Сейчас Telegram.
-     Когда появится Яндекс Форма, вставьте её адрес: метка канала (?src=...) передастся в форму автоматически. */
-  var SIGNUP_URL = 'https://t.me/ecmen11';
-  var FORM_PARAM = 'src';
-
+  /* Запись ведёт Анастасия: телефон и почта. Метка канала (?src=...) попадает в тему письма. */
   var src='';
   try{ var q=new URLSearchParams(location.search); src=(q.get('src')||q.get('utm_source')||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40); }catch(e){}
-  var href=SIGNUP_URL;
-  if(src && SIGNUP_URL.indexOf('t.me/')===-1){ try{ var u=new URL(SIGNUP_URL); u.searchParams.set(FORM_PARAM,src); href=u.toString(); }catch(e){} }
-  document.querySelectorAll('.js-signup').forEach(function(a){ a.href=href; });
+  var subj='Запись на бесплатный воркшоп «ИИ в работе менеджера»'+(src?' ['+src+']':'');
+  var body='Здравствуйте, Анастасия! Хочу записаться на бесплатный воркшоп «ИИ в работе менеджера».\n\nИмя:\nДолжность и компания:\nТелефон или Telegram:';
+  document.querySelectorAll('.js-mail').forEach(function(a){ a.href='mailto:nastya@happinessinaction.ru?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body); });
 
   /* mobile menu */
   var btn=document.querySelector('.menu-btn'), panel=document.getElementById('panel');
