@@ -86,10 +86,12 @@ p{margin:0;text-wrap:pretty}
 .panel.open a{opacity:1;transform:none}
 
 /* hero */
-.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:64px;align-items:center;padding-block:96px 0}
+.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:48px;align-items:center;padding-block:96px 0}
 .hero-text{display:grid;gap:32px;min-width:0}
 .hero-text h1{font-size:clamp(40px,6.4vw,64px)}
-.hero-cta{display:flex;flex-wrap:wrap;gap:24px;align-items:center}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.test-btn{gap:10px}
+.test-btn .mins{font-family:var(--mono);font-size:12px;font-weight:400;color:var(--mint);background:rgba(79,227,193,.1);border-radius:999px;padding:2px 8px}
 .meta{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
 .meta b{color:var(--mint);font-weight:400}
 
@@ -279,8 +281,11 @@ footer a{color:var(--muted)}
       <h1 id="h1">Что ИИ уже может сделать <span class="hl">за менеджера</span></h1>
       <p class="lead">Два часа без технических подробностей: что ИИ уже снимает с руководителя, как это работает на предприятии на 1500 сотрудников и с чего начать в понедельник.</p>
       <div class="hero-cta">
-        <a class="btn js-signup" href="https://t.me/ecmen11" target="_blank" rel="noopener">Записаться на бесплатный воркшоп</a>
-        <a class="tlink" href="checkup/">Проверить свой уровень за 5 минут →</a>
+        <a class="btn js-signup" href="https://t.me/ecmen11" target="_blank" rel="noopener">Записаться бесплатно</a>
+        <a class="btn ghost test-btn" href="checkup/">
+          <svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><polygon points="16,4 27.4,12.3 23,25.7 9,25.7 4.6,12.3" fill="none" stroke="#4fe3c1" stroke-width="2.4" stroke-linejoin="round"/><polygon points="16,9 22.5,14 20,21.5 12.5,20.5 9.5,14.5" fill="rgba(255,138,61,.45)" stroke="#ff8a3d" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          Проверить свой уровень <span class="mins">5 мин</span>
+        </a>
       </div>
       <div class="meta"><b>●</b> 2 часа · Zoom · бесплатно</div>
     </div>
