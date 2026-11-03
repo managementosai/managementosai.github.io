@@ -251,6 +251,7 @@ p{margin:0;text-wrap:pretty}
 .hl4 b{font-size:15px;color:var(--fg)}
 .hl4 .me{border-color:rgba(79,227,193,.5);background:linear-gradient(135deg,rgba(79,227,193,.12),rgba(79,227,193,.02))}
 
+.research .dr{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 /* how */
 .how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;counter-reset:s}
 .how .card{position:relative;padding-top:56px}
@@ -354,6 +355,7 @@ footer a{color:var(--muted)}
   .works{grid-template-columns:repeat(2,minmax(0,1fr))}
   .more{grid-template-columns:minmax(0,1fr)}
   .hl4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .research .dr{grid-template-columns:minmax(0,1fr);gap:12px}
   .chain{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:12px}.chain li::after{display:none}
   .market{grid-template-columns:minmax(0,1fr);gap:24px}
   .proof{grid-template-columns:repeat(2,minmax(0,1fr))}.proof li{border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}.proof li:nth-child(2n){border-right:0!important}.proof li:nth-last-child(-n+2){border-bottom:0!important}
@@ -501,7 +503,7 @@ footer a{color:var(--muted)}
     <div class="head rv">
       <div class="kicker">Без программиста · покажу от задачи до результата</div>
       <h2 id="moreh">Что вы сможете <span class="hl">делать сами</span></h2>
-      <p class="lead">Семь инструментов, которые экономят дни работы. Для каждого не нужен ни отдел ИТ, ни бюджет на внедрение: только ваши документы и понятная задача.</p>
+      <p class="lead">Восемь инструментов, которые экономят дни работы. Для каждого не нужен ни отдел ИТ, ни бюджет на внедрение: только ваши документы и понятная задача.</p>
     </div>
     <article class="panel-x wide decide rv">
       <div class="px-head">
@@ -565,6 +567,19 @@ footer a{color:var(--muted)}
     <div class="more">
       <article class="panel-x rv">
         <div class="px-head">
+          <div class="px-big ico"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4fe3c1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3H11v17H5.5A2.5 2.5 0 0 0 3 22.5z"/><path d="M21 5.5A2.5 2.5 0 0 0 18.5 3H13v17h5.5a2.5 2.5 0 0 1 2.5 2.5z"/></svg><small>книга → система</small></div>
+          <div><h3>Из толстой книги или регламента — ваш рабочий фреймворк</h3><p>Нет времени неделями вникать в книгу по управлению или большой регламент? ИИ выделит суть, адаптирует её под вашу работу и станет помощником, который отвечает строго по этому источнику.</p></div>
+        </div>
+        <ol class="dr">
+          <li><span class="dn">1</span><div><b>Суть без воды</b>Ключевые идеи, модели и выводы автора.</div></li>
+          <li><span class="dn">2</span><div><b>Под вашу работу</b>Фреймворк, чек-лист или алгоритм для ваших задач и вашей компании.</div></li>
+          <li><span class="dn">3</span><div><b>Помощник по источнику</b>Отвечает на ваши вопросы со ссылкой на главу или пункт.</div></li>
+        </ol>
+        <p class="px-note">Книгу всё равно стоит прочитать, но уже прицельно: те главы, которые важны именно вам.</p>
+      </article>
+
+      <article class="panel-x rv">
+        <div class="px-head">
           <div class="px-big"><span class="cnt" data-to="5">5</span><small>форматов</small></div>
           <div><h3>Один документ — целый курс обучения</h3><p>Загружаете регламент или инструкцию, и ИИ делает из него учебные материалы. Черновик за минуты, методисту остаётся проверить.</p></div>
         </div>
@@ -580,19 +595,20 @@ footer a{color:var(--muted)}
         </div>
       </article>
 
-      <article class="panel-x rv">
-        <div class="px-head">
-          <div class="px-big"><small class="pre-s">до</small><span class="cnt" data-to="20">20</span><small>минут</small></div>
-          <div><h3>Глубокое исследование уровня эксперта</h3><p>За 10–20 минут ИИ делает то, на что у аналитика уходили дни: находит, читает и сравнивает источники.</p></div>
-        </div>
-        <ol class="dr">
-          <li><span class="dn">1</span><div><b>Ваш вопрос</b>Как другие решают нашу проблему? Что изменилось на рынке? Какие есть лучшие практики?</div></li>
-          <li><span class="dn">2</span><div><b>ИИ изучает десятки и сотни источников</b>Сам находит, читает и сравнивает материалы, отбрасывает слабые.</div></li>
-          <li><span class="dn">3</span><div><b>Готовый разбор</b>Причины, варианты решения, риски и опыт других компаний. Каждый вывод со ссылкой на источник.</div></li>
-        </ol>
-        <p class="px-note">Ключевые цифры перед решением всё равно стоит открыть и проверить самому.</p>
-      </article>
     </div>
+  <article class="panel-x wide research rv">
+      <div class="px-head">
+        <div class="px-big"><small class="pre-s">до</small><span class="cnt" data-to="20">20</span><small>минут</small></div>
+        <div><h3>Глубокое исследование уровня эксперта</h3><p>За 10–20 минут ИИ делает то, на что у аналитика уходили дни: находит, читает и сравнивает источники.</p></div>
+      </div>
+      <ol class="dr">
+        <li><span class="dn">1</span><div><b>Ваш вопрос</b>Как другие решают нашу проблему? Что изменилось на рынке? Какие есть лучшие практики?</div></li>
+        <li><span class="dn">2</span><div><b>ИИ изучает десятки и сотни источников</b>Сам находит, читает и сравнивает материалы, отбрасывает слабые.</div></li>
+        <li><span class="dn">3</span><div><b>Готовый разбор</b>Причины, варианты решения, риски и опыт других компаний. Каждый вывод со ссылкой на источник.</div></li>
+      </ol>
+      <p class="px-note">Ключевые цифры перед решением всё равно стоит открыть и проверить самому.</p>
+    </article>
+
     <article class="panel-x wide rv">
       <div class="px-head">
         <div class="px-big"><span class="pxn"><span class="cnt" data-to="100">100</span>+</span><small>документов</small></div>
