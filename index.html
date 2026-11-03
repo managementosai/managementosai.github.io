@@ -86,7 +86,8 @@ p{margin:0;text-wrap:pretty}
 .panel.open a{opacity:1;transform:none}
 
 /* hero */
-.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:48px;align-items:center;padding-block:96px 0}
+.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:48px;align-items:center;padding-block:112px 24px}
+.hero-text h1{max-width:820px}
 .hero-text{display:grid;gap:32px;min-width:0}
 .hero-text h1{font-size:clamp(40px,6.4vw,64px)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
@@ -394,25 +395,9 @@ footer a{color:var(--muted)}
           Проверить свой уровень <span class="mins">5 мин</span>
         </a>
       </div>
-      <div class="meta"><b>●</b> 2 часа · Zoom · бесплатно</div>
-    </div>
-
-    <div class="agent" aria-label="Пример: агент готовит отчёт по поручениям">
-      <div class="top"><span>агент:~/поручения</span><span>● работает</span></div>
-      <div class="say"><small>Вы говорите голосом</small>«Сверь поручения с наступившим сроком и собери отчёт со светофором нарушений».</div>
-      <div class="steps">
-        <div class="st"><span class="ic">✓</span><span>Открыл 150 протоколов и карточек</span><span class="tag">готово</span></div>
-        <div class="st"><span class="ic">✓</span><span>Сверил сроки и статусы</span><span class="tag">готово</span></div>
-        <div class="st run"><span class="ic"></span><span>Собираю отчёт в вашу папку</span><span class="tag">в работе</span></div>
-      </div>
     </div>
   </section>
 
-  <div class="nums" aria-label="ИИ на предприятии в цифрах">
-    <div class="num rv"><b><span class="cnt" data-to="26">26</span></b><small>ИИ-ассистентов и агентов работают на предприятии каждый день</small></div>
-    <div class="num rv"><b><span class="cnt" data-to="100">100</span><span>%</span></b><small>разговоров с клиентами проверяет ИИ. Раньше слушали выборочно</small></div>
-    <div class="num rv"><b>~<span class="cnt" data-to="150">150</span></b><small>протоколов и карточек поручений агент сверяет к началу каждой недели</small></div>
-  </div>
 
   <!-- PAINS: same order as the cases below -->
   <section aria-labelledby="pains">
