@@ -184,7 +184,7 @@ p{margin:0;text-wrap:pretty}
 .blab::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor}
 .bcol.ok .blab{color:var(--mint)}.bcol.mid .blab{color:var(--sun)}.bcol.no .blab{color:var(--rose)}
 
-.more+.more,.wide+.more{margin-top:16px}
+.more+.more,.wide+.more,.more+.wide{margin-top:16px}
 .panel-x.wide{margin-bottom:0}
 .pipe{display:grid;grid-template-columns:minmax(0,1fr) 150px minmax(0,1fr);gap:24px;align-items:center}
 .pipe-col{display:grid;gap:12px;align-content:start}
@@ -213,14 +213,31 @@ p{margin:0;text-wrap:pretty}
 .day i{font-style:normal;color:var(--mint);font-size:13px}
 .day.on{border-color:rgba(255,209,102,.5)}.day.on i{color:var(--sun);animation:pulse 1.4s var(--ease) infinite}
 
-.proof{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--line);border-radius:20px;background:var(--surface);overflow:hidden}
-.proof li{display:grid;gap:6px;align-content:start;padding:20px;border-right:1px solid var(--line);font-size:14px;color:var(--muted);line-height:1.45}
-.proof li:last-child{border-right:0}
+.proof{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:20px;background:var(--surface);overflow:hidden}
+.proof li{display:grid;gap:6px;align-content:start;padding:20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font-size:14px;color:var(--muted);line-height:1.45}
+.proof li:nth-child(3n){border-right:0}.proof li:nth-last-child(-n+3){border-bottom:0}
 .proof b{font-size:15px;color:var(--fg)}
 .proof b::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mint);margin-right:8px;vertical-align:middle}
 .proof li:last-child b::before{background:var(--sun)}
 .proof em{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--sun);display:block;margin-top:4px;text-transform:uppercase;letter-spacing:.08em}
 .proof .cnt{color:var(--fg);font-weight:600}
+
+.chain{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;counter-reset:c}
+.chain li{position:relative;display:grid;gap:4px;align-content:start;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 12px;font-size:12px;color:var(--dim);line-height:1.4}
+.chain li:not(:last-child)::after{content:"";position:absolute;right:-9px;top:28px;width:8px;height:2px;background:var(--accent)}
+.chain b{font-size:14px;color:var(--fg)}
+.chain .dn{width:26px;height:26px;font-size:12px;margin-bottom:4px}
+.chain li:nth-child(4){border-color:rgba(255,122,133,.45)}.chain li:nth-child(4) .dn{background:var(--rose)}
+.chain li.fin{border-color:rgba(79,227,193,.5);background:linear-gradient(135deg,rgba(79,227,193,.12),rgba(79,227,193,.02))}
+.decide{border-color:rgba(255,138,61,.4);background:linear-gradient(135deg,rgba(255,138,61,.08),var(--surface) 45%)}
+.market{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:40px 0}
+.mk-head{display:grid;gap:12px}
+.mk-head h2{font-size:clamp(24px,3vw,30px)}
+.mk-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.mk{display:grid;gap:6px;align-content:start;font-size:13px;color:var(--muted);line-height:1.45}
+.mk b{font-family:var(--display);font-weight:600;font-size:34px;line-height:1.1;color:var(--accent);font-variant-numeric:tabular-nums}
+.mk a{font-size:12px;color:var(--dim);text-decoration:underline;text-underline-offset:3px}
+.mk a:hover{color:var(--mint)}
 
 /* how */
 .how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;counter-reset:s}
@@ -324,7 +341,9 @@ footer a{color:var(--muted)}
   .nums{margin-top:56px}
   .works{grid-template-columns:repeat(2,minmax(0,1fr))}
   .more{grid-template-columns:minmax(0,1fr)}
-  .proof{grid-template-columns:minmax(0,1fr)}.proof li{border-right:0;border-bottom:1px solid var(--line)}.proof li:last-child{border-bottom:0}
+  .chain{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:12px}.chain li::after{display:none}
+  .market{grid-template-columns:minmax(0,1fr);gap:24px}
+  .proof{grid-template-columns:repeat(2,minmax(0,1fr))}.proof li{border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}.proof li:nth-child(2n){border-right:0!important}.proof li:nth-last-child(-n+2){border-bottom:0!important}
   .pipe{grid-template-columns:minmax(0,1fr);gap:16px}.pipe-core{height:auto;padding:8px 0}.pipe-core::before{left:50%;right:auto;top:-16px;bottom:-16px;width:2px;height:auto;background:linear-gradient(180deg,rgba(181,192,214,.3),var(--accent) 35%,var(--mint) 65%,rgba(79,227,193,.3))}
   .grid3,.how{grid-template-columns:repeat(2,minmax(0,1fr))}
   .test,.next{grid-template-columns:minmax(0,1fr);padding:32px}
@@ -349,6 +368,9 @@ footer a{color:var(--muted)}
   .flow{grid-template-columns:minmax(0,1fr);gap:16px}.src{grid-auto-flow:column;justify-content:start}.src::after{display:none}
   .outs{padding-left:18px}.outs::before{left:0}.outs li::before{left:-18px}
   .pains,.terms,.skill{grid-template-columns:minmax(0,1fr)}
+  .chain{grid-template-columns:minmax(0,1fr)}.chain li{grid-template-columns:26px minmax(0,1fr);column-gap:12px}.chain .dn{grid-row:span 2;margin:0}
+  .mk-facts{grid-template-columns:minmax(0,1fr);gap:16px}.mk{grid-template-columns:auto minmax(0,1fr);column-gap:16px;align-items:baseline}.mk b{font-size:28px;grid-row:span 2}
+  .proof li{border-right:0!important;border-bottom:1px solid var(--line)!important}.proof li:last-child{border-bottom:0!important}
   .week{gap:6px}.day{padding:10px 2px}.day b{font-size:12px}
   .plan{grid-template-columns:minmax(0,1fr);row-gap:24px}
   .nums{grid-template-columns:minmax(0,1fr)}.num{padding:16px 20px;border-right:0;border-bottom:1px solid var(--line)}.num:last-child{border-bottom:0}.num b{font-size:28px}
@@ -421,7 +443,7 @@ footer a{color:var(--muted)}
       <li class="rv"><span class="pn">01</span><div><h3>Собрать отчёт или доклад из десятков файлов</h3><p>Найти, прочитать, свести, оформить. Уходит не день, а неделя.</p></div></li>
       <li class="rv"><span class="pn">02</span><div><h3>Объяснять одно и то же по кругу</h3><p>Свои правила и подходы приходится каждый раз пересказывать заново.</p></div></li>
       <li class="rv"><span class="pn">03</span><div><h3>Быть в курсе рынка и новостей</h3><p>Каждое утро поиск, десяток вкладок и выписки. Или не успеваете вовсе.</p></div></li>
-      <li class="rv"><span class="pn">04</span><div><h3>Разобраться в новой теме перед решением</h3><p>Информации много, времени мало. Решение принимается «на глаз».</p></div></li>
+      <li class="rv"><span class="pn">04</span><div><h3>Подготовить решение для руководства</h3><p>Анализ, альтернативы, риски и обоснование выбора. А срок — «к завтрашнему совещанию».</p></div></li>
       <li class="rv"><span class="pn">05</span><div><h3>Записать совещание и не потерять</h3><p>Через неделю никто не помнит, что решили и кто отвечает.</p></div></li>
       <li class="rv"><span class="pn">06</span><div><h3>Проверить, кто что сделал</h3><p>Поручения, сроки, статусы. Чем больше людей, тем больше ручных сверок.</p></div></li>
     </ol>
@@ -445,30 +467,43 @@ footer a{color:var(--muted)}
     <p class="terms rv"><span><b>Ассистент</b> — ИИ, настроенный под одну задачу и ваши правила.</span><span><b>Агент</b> — ИИ, который сам работает с вашими файлами и доводит задачу до результата.</span></p>
   </section>
 
+  <!-- MARKET -->
+  <section aria-labelledby="markh">
+    <div class="market rv">
+      <div class="mk-head">
+        <div class="kicker">Почему сейчас</div>
+        <h2 id="markh">Работодатели всё чаще <span class="hl">ищут этот навык</span></h2>
+        <p class="muted">Пока такой навык выделяет кандидата среди других. Через пару лет он станет обязательным, как когда-то умение работать в Excel.</p>
+      </div>
+      <div class="mk-facts">
+        <div class="mk"><b>×2,7</b><span>вакансий с требованием навыков ИИ в России за год</span><a href="https://sber.pro/publication/spros-na-spetsialistov-s-navikami-raboti-s-ii-sredi-rabotodatelei-viros-pochti-v-3-raza/" target="_blank" rel="noopener">hh.ru, I кв. 2026</a></div>
+        <div class="mk"><b><span class="cnt" data-to="66">66</span>%</b><span>руководителей в мире не готовы нанимать сотрудника без навыков ИИ</span><a href="https://news.microsoft.com/source/2024/05/08/microsoft-and-linkedin-release-the-2024-work-trend-index-on-the-state-of-ai-at-work/" target="_blank" rel="noopener">Microsoft и LinkedIn</a></div>
+        <div class="mk"><b>~<span class="cnt" data-to="2">2</span>%</b><span>вакансий пока требуют этот навык: окно, когда он ещё даёт преимущество</span><a href="https://www.eanews.ru/rossiya/20260706143957/v-rossii-v-pyat-raz-vyroslo-chislo-vakansiy-s-trebovaniem-navykov-raboty-s-ii" target="_blank" rel="noopener">hh.ru, 2026</a></div>
+      </div>
+    </div>
+  </section>
+
   <!-- MORE -->
   <section id="program" aria-labelledby="moreh">
     <div class="head rv">
       <div class="kicker">Без программиста · покажу от задачи до результата</div>
       <h2 id="moreh">Что вы сможете <span class="hl">делать сами</span></h2>
-      <p class="lead">Пять инструментов, которые экономят дни работы. Для каждого не нужен ни отдел ИТ, ни бюджет на внедрение: только ваши документы и понятная задача.</p>
+      <p class="lead">Шесть инструментов, которые экономят дни работы. Для каждого не нужен ни отдел ИТ, ни бюджет на внедрение: только ваши документы и понятная задача.</p>
     </div>
-    <article class="panel-x wide rv">
+    <article class="panel-x wide decide rv">
       <div class="px-head">
-        <div class="px-big"><span class="pxn"><span class="cnt" data-to="100">100</span>+</span><small>документов</small></div>
-        <div><h3>Из сотен разрозненных документов — готовый результат за десятки минут</h3><p>PDF, Word, таблицы, сканы, письма и записи встреч лежат в одной папке. Агент сам всё прочитает, сведёт, соберёт нужный результат и опубликует его по ссылке. Раньше на это уходили недели работы.</p></div>
+        <div class="px-big"><span class="cnt" data-to="3">3</span><small>альтернативы</small></div>
+        <div><h3>Решение для руководства — в сжатые сроки</h3><p>Руководитель, правление, совет директоров или акционер ждут анализ и предложение «к завтрашнему совещанию». ИИ помогает быстро разобрать большие массивы данных, построить несколько альтернатив, оценить риски и обосновать выбор. Покажу, как сделать так, чтобы на выходе было ваше оригинальное и качественное решение, а не усреднённый ответ из интернета.</p></div>
       </div>
-      <div class="pipe">
-        <div class="pipe-col">
-          <span class="pipe-lab">На входе: всё вперемешку</span>
-          <div class="chips in"><span>PDF</span><span>Word</span><span>Excel</span><span>Сканы</span><span>Письма</span><span>Презентации</span><span>Записи встреч</span><span>Фото документов</span></div>
-        </div>
-        <div class="pipe-core" aria-hidden="true"><div class="core"><svg width="26" height="26" viewBox="0 0 32 32"><polygon points="16,4 27.4,12.3 23,25.7 9,25.7 4.6,12.3" fill="none" stroke="#ff8a3d" stroke-width="2.4" stroke-linejoin="round"/><circle cx="16" cy="16" r="3.2" fill="#4fe3c1"/></svg><b>Агент</b><small>читает · сводит · собирает</small></div></div>
-        <div class="pipe-col">
-          <span class="pipe-lab">На выходе: то, что нужно вам</span>
-          <div class="chips out"><span>Отчёт</span><span>Доклад</span><span>Презентация</span><span>Визуализация</span><span>Интерактивная страница</span><span>Веб-сайт</span></div>
-          <div class="pub"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>Опубликовано: ссылку можно отправить коллегам</div>
-        </div>
-      </div>
+      <ol class="chain">
+        <li><span class="dn">1</span><b>Данные</b><small>документы, отчёты, таблицы</small></li>
+        <li><span class="dn">2</span><b>Анализ</b><small>что происходит и почему</small></li>
+        <li><span class="dn">3</span><b>Альтернативы</b><small>несколько вариантов с оценками</small></li>
+        <li><span class="dn">4</span><b>Риски и премортем</b><small>представляем, что решение провалилось, и ищем причины</small></li>
+        <li><span class="dn">5</span><b>Обоснование</b><small>почему именно этот вариант</small></li>
+        <li class="fin"><span class="dn">✓</span><b>Предложение</b><small>записка или презентация для правления</small></li>
+      </ol>
+      <p class="px-note">Такой механизм работает у нас в компании при подготовке вопросов на правление и совет директоров. ИИ здесь — спарринг-партнёр: решение и ответственность остаются за вами.</p>
     </article>
 
     <div class="more">
@@ -499,6 +534,25 @@ footer a{color:var(--muted)}
         <div class="dirs"><span class="pipe-lab">О чём и в каком виде</span><div class="chips out"><span>Рынок и конкуренты</span><span>Законодательство</span><span>Цены</span><span>Новости отрасли</span></div><div class="chips in" style="margin-top:8px"><span>письмо</span><span>документ</span><span>страница</span><span>презентация</span></div></div>
       </article>
     </div>
+
+    <article class="panel-x wide rv">
+      <div class="px-head">
+        <div class="px-big"><span class="pxn"><span class="cnt" data-to="100">100</span>+</span><small>документов</small></div>
+        <div><h3>Из сотен разрозненных документов — готовый результат за десятки минут</h3><p>PDF, Word, таблицы, сканы, письма и записи встреч лежат в одной папке. Агент сам всё прочитает, сведёт, соберёт нужный результат и опубликует его по ссылке. Раньше на это уходили недели работы.</p></div>
+      </div>
+      <div class="pipe">
+        <div class="pipe-col">
+          <span class="pipe-lab">На входе: всё вперемешку</span>
+          <div class="chips in"><span>PDF</span><span>Word</span><span>Excel</span><span>Сканы</span><span>Письма</span><span>Презентации</span><span>Записи встреч</span><span>Фото документов</span></div>
+        </div>
+        <div class="pipe-core" aria-hidden="true"><div class="core"><svg width="26" height="26" viewBox="0 0 32 32"><polygon points="16,4 27.4,12.3 23,25.7 9,25.7 4.6,12.3" fill="none" stroke="#ff8a3d" stroke-width="2.4" stroke-linejoin="round"/><circle cx="16" cy="16" r="3.2" fill="#4fe3c1"/></svg><b>Агент</b><small>читает · сводит · собирает</small></div></div>
+        <div class="pipe-col">
+          <span class="pipe-lab">На выходе: то, что нужно вам</span>
+          <div class="chips out"><span>Отчёт</span><span>Доклад</span><span>Презентация</span><span>Визуализация</span><span>Интерактивная страница</span><span>Веб-сайт</span></div>
+          <div class="pub"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>Опубликовано: ссылку можно отправить коллегам</div>
+        </div>
+      </div>
+    </article>
 
     <div class="more">
       <article class="panel-x rv">
@@ -545,6 +599,7 @@ footer a{color:var(--muted)}
       <h2 id="works">Это уже работает <span class="hl">на предприятии</span></h2>
     </div>
     <ul class="proof rv">
+      <li><b>Решения для правления</b><span>Анализ, альтернативы, риски и премортем по каждому вопросу</span></li>
       <li><b>Разговоры с клиентами</b><span>ИИ проверяет каждый разговор по стандартам общения</span></li>
       <li><b>Совещания</b><span><span class="cnt" data-to="8">8</span> ассистентов готовят протокол и проверяют регламент</span></li>
       <li><b>Поручения</b><span>Агент сам собирает отчёт о просрочках к понедельнику</span></li>
@@ -574,8 +629,8 @@ footer a{color:var(--muted)}
     </div>
     <ol class="plan">
       <li class="rv"><span class="tm">0:00</span><h3>Что изменилось</h3><p>Чем агент отличается от чата и почему это важно менеджеру.</p></li>
-      <li class="rv"><span class="tm">0:20</span><h3>Что можно делать самому</h3><p>Отчёт и сайт из сотен документов, свои помощники, ежедневные сводки, исследования. Вживую на экране.</p></li>
-      <li class="rv"><span class="tm">1:00</span><h3>Как это работает в компании</h3><p>Пять направлений живого предприятия: как было и что получилось.</p></li>
+      <li class="rv"><span class="tm">0:20</span><h3>Что можно делать самому</h3><p>Решение для правления, отчёт и сайт из сотен документов, свои помощники, сводки и исследования. Вживую на экране.</p></li>
+      <li class="rv"><span class="tm">1:00</span><h3>Как это работает в компании</h3><p>Шесть направлений живого предприятия: как было и что получилось.</p></li>
       <li class="rv"><span class="tm">1:40</span><h3>Граница и первые шаги</h3><p>Что нельзя доверять ИИ, с чего начать в понедельник и ваши вопросы.</p></li>
     </ol>
     <div class="take rv">
