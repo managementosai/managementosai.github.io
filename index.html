@@ -86,16 +86,23 @@ p{margin:0;text-wrap:pretty}
 .panel.open a{opacity:1;transform:none}
 
 /* hero */
-.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center;padding-block:64px 0}
-.hero-text{display:grid;gap:24px;min-width:0}
-.hero-cta{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
-.proof{display:flex;flex-wrap:wrap;gap:8px}
-.chip{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;color:var(--muted)}
-.chip b{color:var(--fg);font-weight:600}
-.chip .d{width:8px;height:8px;border-radius:50%;background:var(--mint);flex:none}
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:64px;align-items:center;padding-block:96px 0}
+.hero-text{display:grid;gap:32px;min-width:0}
+.hero-text h1{font-size:clamp(40px,6.4vw,64px)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:24px;align-items:center}
+.meta{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.meta b{color:var(--mint);font-weight:400}
+
+/* numbers strip */
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:80px;border:1px solid var(--line);border-radius:24px;background:rgba(20,31,56,.6);overflow:hidden}
+.num{padding:24px;border-right:1px solid var(--line);display:grid;gap:8px;align-content:start}
+.num:last-child{border-right:0}
+.num b{font-family:var(--display);font-weight:600;font-size:36px;line-height:1.1;color:var(--fg);font-variant-numeric:tabular-nums}
+.num b span{color:var(--accent)}
+.num small{font-size:14px;line-height:1.45;color:var(--muted)}
 
 /* agent card */
-.agent{background:linear-gradient(180deg,var(--surface2),var(--surface));border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 24px 60px rgba(0,0,0,.35);display:grid;gap:16px;min-width:0}
+.agent{background:linear-gradient(180deg,var(--surface2),var(--surface));border:1px solid var(--line);border-radius:24px;padding:24px;max-width:440px;justify-self:end;width:100%;box-shadow:0 24px 60px rgba(0,0,0,.35);display:grid;gap:16px;min-width:0}
 .agent .top{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--dim)}
 .agent .top span:last-child{color:var(--mint)}
 .say{background:rgba(255,138,61,.1);border:1px solid rgba(255,138,61,.35);border-radius:16px;padding:12px 16px;font-size:14px;display:grid;gap:4px}
@@ -125,15 +132,18 @@ p{margin:0;text-wrap:pretty}
 .tagline .w.on{color:var(--fg)}
 .tagline .w.hlw.on{color:var(--accent)}
 
-/* stories */
-.stories{display:grid;gap:16px}
-.story{display:grid;grid-template-columns:72px minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px}
-.story .n{font-family:var(--display);font-size:30px;line-height:1;color:var(--accent)}
-.story h3{margin-bottom:4px}
-.story .who{font-size:14px;color:var(--dim)}
-.story .res{font-size:15px;color:var(--muted)}
-.story .res b{color:var(--mint);font-weight:600}
-.note{margin-top:16px;font-size:14px;color:var(--dim);max-width:720px}
+/* works */
+.works{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.work{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;display:grid;gap:12px;align-content:start;min-width:0;transition:transform .5s var(--ease),border-color .3s var(--ease)}
+.work:hover{transform:translateY(-3px);border-color:#34497a}
+.work .row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.work .ic{width:40px;height:40px;border-radius:12px;background:rgba(255,138,61,.12);display:grid;place-items:center;flex:none}
+.st-ok,.st-dev{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:4px 10px;white-space:nowrap}
+.st-ok{color:var(--mint);background:rgba(79,227,193,.1)}
+.st-dev{color:var(--sun);background:rgba(255,209,102,.1)}
+.work p{color:var(--muted);font-size:15px}
+.work p b{color:var(--fg);font-weight:600}
+.note{margin-top:24px;font-size:15px;color:var(--muted);max-width:760px}
 
 /* how */
 .how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;counter-reset:s}
@@ -200,10 +210,13 @@ footer a{color:var(--muted)}
 .rv{transition:opacity .7s var(--ease),transform .7s var(--ease)}
 
 @media (max-width:900px){
-  .hero{grid-template-columns:minmax(0,1fr);gap:40px;padding-top:40px}
+  .hero{grid-template-columns:minmax(0,1fr);gap:48px;padding-top:56px}
+  .agent{justify-self:start}
+  .nums{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:56px}
+  .num:nth-child(2){border-right:0}
+  .num:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .works{grid-template-columns:repeat(2,minmax(0,1fr))}
   .grid3,.how{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .story{grid-template-columns:48px minmax(0,1fr)}
-  .story .res{grid-column:2}
   .test,.next{grid-template-columns:minmax(0,1fr);padding:32px}
   .author{grid-template-columns:minmax(0,1fr);gap:24px}
   .author img{width:160px;height:160px}
@@ -215,7 +228,8 @@ footer a{color:var(--muted)}
 }
 @media (max-width:560px){
   section{padding-top:64px}
-  .grid3,.how,.vs{grid-template-columns:minmax(0,1fr)}
+  .grid3,.how,.vs,.works{grid-template-columns:minmax(0,1fr)}
+  .num{padding:16px}.num b{font-size:28px}
   .stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
   .stat{padding:12px}.stat b{font-size:24px}
   .test,.next{padding:24px;border-radius:24px}
@@ -261,33 +275,33 @@ footer a{color:var(--muted)}
   <!-- HERO -->
   <section class="hero" aria-labelledby="h1">
     <div class="hero-text">
-      <div class="kicker">Бесплатный онлайн-воркшоп · 2 часа · Zoom</div>
+      <div class="kicker">Бесплатный онлайн-воркшоп для менеджеров</div>
       <h1 id="h1">Что ИИ уже может сделать <span class="hl">за менеджера</span></h1>
-      <p class="lead">Без технических подробностей: какие задачи ИИ уже снимает, как это выглядит на живом предприятии и с чего начать в понедельник.</p>
+      <p class="lead">Два часа без технических подробностей: что ИИ уже снимает с руководителя, как это работает на предприятии на 1500 сотрудников и с чего начать в понедельник.</p>
       <div class="hero-cta">
         <a class="btn js-signup" href="https://t.me/ecmen11" target="_blank" rel="noopener">Записаться на бесплатный воркшоп</a>
-        <a class="tlink" href="checkup/">или проверьте свой уровень за 5 минут</a>
+        <a class="tlink" href="checkup/">Проверить свой уровень за 5 минут →</a>
       </div>
-      <div class="proof">
-        <span class="chip"><span class="d"></span><span>Ведёт гендиректор компании на <b>1500+</b> сотрудников</span></span>
-        <span class="chip"><b>24</b> ИИ-ассистента в работе</span>
-      </div>
+      <div class="meta"><b>●</b> 2 часа · Zoom · бесплатно</div>
     </div>
 
     <div class="agent" aria-label="Пример: агент готовит отчёт по поручениям">
       <div class="top"><span>агент:~/поручения</span><span>● работает</span></div>
-      <div class="say"><small>Вы говорите голосом</small>«Сверь поручения с наступившим сроком с карточками и собери отчёт со светофором нарушений».</div>
+      <div class="say"><small>Вы говорите голосом</small>«Сверь поручения с наступившим сроком и собери отчёт со светофором нарушений».</div>
       <div class="steps">
         <div class="st"><span class="ic">✓</span><span>Открыл 150 протоколов и карточек</span><span class="tag">готово</span></div>
         <div class="st"><span class="ic">✓</span><span>Сверил сроки и статусы</span><span class="tag">готово</span></div>
-        <div class="st run"><span class="ic"></span><span>Собираю отчёт по исполнению</span><span class="tag">в работе</span></div>
-      </div>
-      <div class="result">
-        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h10l6 6v10H4z" fill="none" stroke="#4fe3c1" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" fill="none" stroke="#4fe3c1" stroke-width="1.6"/><path d="M8 14h8M8 17h5" stroke="#4fe3c1" stroke-width="1.6" stroke-linecap="round"/></svg>
-        <span>Отчёт ляжет в вашу папку к началу недели. Вам остаётся проверить и принять решение.</span>
+        <div class="st run"><span class="ic"></span><span>Собираю отчёт в вашу папку</span><span class="tag">в работе</span></div>
       </div>
     </div>
   </section>
+
+  <div class="nums" aria-label="ИИ на предприятии в цифрах">
+    <div class="num rv"><b>26</b><small>ИИ-ассистентов работают на предприятии каждый день</small></div>
+    <div class="num rv"><b>100<span>%</span></b><small>разговоров с клиентами оценивает ИИ, а не выборочная проверка</small></div>
+    <div class="num rv"><b>~150</b><small>протоколов в неделю сверяет агент контроля поручений</small></div>
+    <div class="num rv"><b>50→20<span>%</span></b><small>уход новичков в первые месяцы после перестройки адаптации</small></div>
+  </div>
 
   <!-- PAINS -->
   <section aria-labelledby="pains">
@@ -310,21 +324,28 @@ footer a{color:var(--muted)}
     <p id="tag">Компании нельзя навязать ИИ. Можно решить задачу конкретного человека и помочь ему стать успешнее.</p>
   </section>
 
-  <!-- STORIES -->
-  <section id="program" aria-labelledby="stories">
+  <!-- WORKS -->
+  <section id="program" aria-labelledby="works">
     <div class="head rv">
-      <div class="kicker">Программа · 2 часа</div>
-      <h2 id="stories">Пять историй <span class="hl">с живого предприятия</span></h2>
-      <p class="lead">В каждой конкретный человек и его конкретная проблема. Показываю, как было, что сделал ИИ и что получилось.</p>
+      <div class="kicker">Программа · 2 часа · не теория</div>
+      <h2 id="works">Что уже работает <span class="hl">на живом предприятии</span></h2>
+      <p class="lead">На воркшопе покажу каждое направление: как было, что делает ИИ и что получилось. Все примеры из компании на 1500 сотрудников и 6 филиалов.</p>
     </div>
-    <div class="stories">
-      <article class="story rv"><div class="n">01</div><div><h3>Контроль поручений</h3><div class="who">Руководитель и исполнители</div></div><p class="res">Агент сверяет около <b>150 протоколов в неделю</b>. Отчёт со светофором нарушений готов к началу недели, а по выполненным поручениям уже стоят встречи в календаре.</p></article>
-      <article class="story rv"><div class="n">02</div><div><h3>Совещания и разговоры с клиентами</h3><div class="who">Руководители и клиентские службы</div></div><p class="res">Протокол совещания приходит на почту, а каждый разговор с клиентом оценивается по стандартам, а не по случайной выборке.</p></article>
-      <article class="story rv"><div class="n">03</div><div><h3>Новый сотрудник в курсе дела</h3><div class="who">Новички, наставники, HR</div></div><p class="res">Из разрозненных приказов собран единый регламент, по нему обучение и портал. Уход новичков в первые 1–2 месяца снизился <b>с 50% до 20%</b>.</p></article>
-      <article class="story rv"><div class="n">04</div><div><h3>Виртуальный сотрудник в каждом отделе</h3><div class="who">Экономисты, HR, технические службы</div></div><p class="res">Помощник знает правила отдела. Новичок получает ответ сразу, опытный специалист экономит часы.</p></article>
-      <article class="story rv"><div class="n">05</div><div><h3>Встречи линейных руководителей</h3><div class="who">Руководство и филиалы</div></div><p class="res">Сводка по всем филиалам собирается сама. Раньше на неё уходила <b>неделя ручной работы</b>.</p></article>
+    <div class="works">
+      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span class="st-ok">работает</span></div>
+        <h3>Разговоры с клиентами</h3><p>Каждый разговор во всех филиалах записывается, переводится в текст и оценивается ИИ по стандартам общения. Персональные данные вырезаются <b>до</b> анализа.</p></article>
+      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><span class="st-ok">работает</span></div>
+        <h3>Совещания и встречи</h3><p><b>8 ИИ-ассистентов</b> разбирают записи, проверяют соблюдение регламента и составляют протокол. Руководитель получает PDF на почту.</p></article>
+      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span><span class="st-ok">работает</span></div>
+        <h3>Контроль поручений</h3><p>Агент сверяет поручения с наступившим сроком и к началу недели готовит отчёт: что сделано, что просрочено и почему.</p></article>
+      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 4.5a3 3 0 0 1 0 6M18 20a6 6 0 0 0-3-5.2"/></svg></span><span class="st-ok">работает</span></div>
+        <h3>Помощники в каждом отделе</h3><p><b>16 ассистентов</b> с инструкциями и базами знаний отделов. Для глубоких исследований есть ИИ-кабинет, где ответы нескольких ИИ сверяются между собой.</p></article>
+      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V6a2 2 0 0 1 2-2h12v15H6a2 2 0 0 0-2 2"/><path d="M8 8h6M8 12h6"/></svg></span><span class="st-ok">работает</span></div>
+        <h3>Адаптация новичков</h3><p>Из разрозненных приказов собран единый регламент, по нему обучение и портал. Уход новичков снизился <b>с 50% до 20%</b>.</p></article>
+      <article class="work rv"><div class="row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span class="st-dev">в разработке</span></div>
+        <h3>Управленческая аналитика</h3><p>Данные из учётных систем собираются в интерактивные отчёты с кликабельными цифрами. Брифы для правления готовятся с помощью ИИ.</p></article>
     </div>
-    <p class="note rv">Ещё покажу, как из одного документа сделать обучение в пяти форматах, как за 10–20 минут получить исследование уровня эксперта и как агент помогает принять взвешенное решение. Результат по адаптации получен после перестройки всей системы, не только за счёт ИИ.</p>
+    <p class="note rv">Ещё покажу, как из одного документа сделать обучение в пяти форматах, как за 10–20 минут получить исследование уровня эксперта и где граница между тем, что менеджер делает сам, и работой программиста. Результат по адаптации получен после перестройки всей системы, не только за счёт ИИ.</p>
   </section>
 
   <!-- HOW -->
@@ -384,7 +405,7 @@ footer a{color:var(--muted)}
         <div class="stats rv">
           <div class="stat"><b>20+</b><small>лет в управлении</small></div>
           <div class="stat"><b>1500+</b><small>сотрудников</small></div>
-          <div class="stat"><b>24</b><small>ИИ-ассистента в работе</small></div>
+          <div class="stat"><b>26</b><small>ИИ-ассистентов в работе</small></div>
         </div>
         <div class="np rv"><span class="lab">Я не программист</span><p>Всё, что я покажу, сделано обычным пользователем ИИ. Если получилось у меня, получится и у вас. А там, где без программиста не обойтись, я так и скажу.</p></div>
       </div>
@@ -441,7 +462,7 @@ footer a{color:var(--muted)}
       <details class="rv"><summary>Я не технарь. Мне будет понятно?</summary><p>Да. Воркшоп для менеджеров любого уровня, которые с ИИ пока на «вы». Никакого кода и технических подробностей. Главный навык здесь не технический: умение объяснить задачу, которое у хорошего менеджера уже есть.</p></details>
       <details class="rv"><summary>Подойдёт ли это для моей сферы?</summary><p>Примеры взяты из работы большого предприятия: документы, контроль, совещания, отчёты, обучение, решения. Эти задачи есть у руководителя в любой отрасли.</p></details>
       <details class="rv"><summary>Это продажа под видом обучения?</summary><p>Нет. Два часа полезного содержания, которое можно применять сразу. В конце я коротко расскажу о практическом воркшопе для тех, кто хочет дальше. Решать вам.</p></details>
-      <details class="rv"><summary>Безопасно ли давать ИИ рабочие данные?</summary><p>На воркшопе отдельно разберём, какие данные можно давать ИИ, а какие нельзя, и какие действия потом не отменишь.</p></details>
+      <details class="rv"><summary>Безопасно ли давать ИИ рабочие данные?</summary><p>На предприятии это решено так: есть регламент работы с ИИ, персональные данные вырезаются до отправки запроса, а решение и ответственность всегда остаются за человеком. Сейчас в разработке собственные ИИ-модели, которые работают без выхода в интернет. На воркшопе разберём, какие данные можно давать ИИ, а какие нельзя.</p></details>
     </div>
   </section>
 
