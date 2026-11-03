@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ИИ в работе менеджера</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Бесплатный онлайн-воркшоп для менеджеров: что ИИ уже может сделать за вас, как это выглядит на живом предприятии и с чего начать в понедельник. 2 часа, Zoom.">
+<!-- Превью для Telegram -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Что ИИ уже может сделать за менеджера">
+<meta property="og:description" content="Бесплатный онлайн-воркшоп: 2 часа, пять историй с живого предприятия, без технических подробностей.">
+<meta property="og:image" content="https://managementosai.github.io/preview.jpg">
+<meta property="og:url" content="https://managementosai.github.io/">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230c1528'/%3E%3Cpolygon points='16,5 26.5,12.6 22.5,25 9.5,25 5.5,12.6' fill='none' stroke='%23ff8a3d' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%234fe3c1'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: same visual system as the self-check — dark navy field, orange + mint accents, rounded cards; one primary action: sign up for the free workshop */
+:root{
+  --bg:#0c1528; --surface:#141f38; --surface2:#1a2744; --line:#25345a;
+  --fg:#f3f5fa; --muted:#b5c0d6; --dim:#7d89a3;
+  --accent:#ff8a3d; --mint:#4fe3c1; --sun:#ffd166; --rose:#ff7a85; --on-accent:#141016;
+  --display:"Unbounded","Golos Text",system-ui,sans-serif;
+  --body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{margin:0;background-color:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(60vmax 45vmax at 105% -10%,rgba(255,138,61,.20),transparent 60%),radial-gradient(55vmax 45vmax at -15% 110%,rgba(79,227,193,.14),transparent 60%),radial-gradient(rgba(181,192,214,.07) 1px,transparent 1.2px);
+  background-size:auto,auto,24px 24px;background-attachment:fixed,fixed,scroll}
+a{color:inherit}
+img{max-width:100%;display:block}
+.skip{position:absolute;left:16px;top:-60px;background:var(--mint);color:var(--on-accent);padding:8px 12px;border-radius:8px;z-index:100;text-decoration:none;font-weight:600}
+.skip:focus{top:12px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:80px 0}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mint)}
+h1,h2,h3{margin:0;text-wrap:balance}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(36px,6vw,60px);line-height:1.1;letter-spacing:-.015em;max-width:680px}
+h1 .hl,h2 .hl{background:linear-gradient(90deg,var(--accent),#ffb36b 55%,var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-family:var(--display);font-weight:500;font-size:clamp(26px,3.6vw,36px);line-height:1.2;letter-spacing:-.01em;max-width:720px}
+h3{font-size:18px;font-weight:600;line-height:1.4}
+p{margin:0;text-wrap:pretty}
+.lead{font-size:18px;line-height:1.6;color:var(--muted);max-width:680px}
+.muted{color:var(--muted)}
+.dim{color:var(--dim);font-size:14px}
+.head{display:grid;gap:16px;margin-bottom:40px}
+
+/* buttons */
+.btn{appearance:none;font:inherit;font-weight:600;font-size:16px;line-height:1.3;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-align:center;text-decoration:none;
+  background:linear-gradient(90deg,var(--accent),#ffa25c);color:var(--on-accent);border:0;border-radius:999px;padding:16px 28px;box-shadow:0 8px 24px rgba(255,138,61,.28);transition:transform .5s var(--ease),box-shadow .3s var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,138,61,.4)}
+.btn:active{transform:translateY(1px)}
+.btn.sm{font-size:14px;padding:10px 18px;box-shadow:none}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line);box-shadow:none}
+.btn.ghost:hover{border-color:var(--mint);color:var(--mint)}
+.tlink{color:var(--mint);font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.tlink:hover{color:var(--fg)}
+:focus-visible{outline:2px solid var(--mint);outline-offset:3px;border-radius:6px}
+
+/* nav */
+.nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);z-index:50;display:flex;justify-content:center;padding-inline:16px;margin-top:12px}
+.nav .bar{display:flex;align-items:center;gap:24px;background:rgba(20,31,56,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px;padding:8px 8px 8px 20px;max-width:100%}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;text-decoration:none;white-space:nowrap;font-size:14px}
+.brand svg{width:22px;height:22px;flex:none}
+.links{display:flex;gap:20px;font-size:14px}
+.links a{text-decoration:none;color:var(--muted);transition:color .3s var(--ease)}
+.links a:hover,.links a.on{color:var(--fg)}
+.menu-btn{display:none;appearance:none;background:none;border:0;color:var(--fg);width:40px;height:40px;border-radius:50%;cursor:pointer;position:relative}
+.menu-btn i{position:absolute;left:11px;right:11px;height:2px;background:currentColor;border-radius:2px;transition:transform .5s var(--ease),opacity .3s var(--ease)}
+.menu-btn i:nth-child(1){top:14px}.menu-btn i:nth-child(2){top:19px}.menu-btn i:nth-child(3){top:24px}
+.menu-btn[aria-expanded="true"] i:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] i:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+.panel{position:fixed;inset:0;z-index:40;background:rgba(12,21,40,.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:110px max(24px,env(safe-area-inset-left,0px)) 40px;display:grid;align-content:start;gap:8px}
+.panel a{font-family:var(--display);font-size:28px;text-decoration:none;padding:8px 0;opacity:0;transform:translateY(24px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.panel.open a{opacity:1;transform:none}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center;padding-block:64px 0}
+.hero-text{display:grid;gap:24px;min-width:0}
+.hero-cta{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.proof{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;color:var(--muted)}
+.chip b{color:var(--fg);font-weight:600}
+.chip .d{width:8px;height:8px;border-radius:50%;background:var(--mint);flex:none}
+
+/* agent card */
+.agent{background:linear-gradient(180deg,var(--surface2),var(--surface));border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 24px 60px rgba(0,0,0,.35);display:grid;gap:16px;min-width:0}
+.agent .top{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--dim)}
+.agent .top span:last-child{color:var(--mint)}
+.say{background:rgba(255,138,61,.1);border:1px solid rgba(255,138,61,.35);border-radius:16px;padding:12px 16px;font-size:14px;display:grid;gap:4px}
+.say small{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.steps{display:grid;gap:8px}
+.st{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:12px;align-items:center;font-size:14px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.st .ic{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:rgba(79,227,193,.15);color:var(--mint);font-size:13px;font-weight:600}
+.st .tag{font-family:var(--mono);font-size:11px;color:var(--mint)}
+.st.run .ic{background:rgba(255,209,102,.15);color:var(--sun)}
+.st.run .tag{color:var(--sun)}
+.st.run .ic::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--sun);animation:pulse 1.4s var(--ease) infinite}
+@keyframes pulse{0%,100%{transform:scale(.7);opacity:.5}50%{transform:scale(1.15);opacity:1}}
+.result{display:flex;align-items:center;gap:12px;border:1px dashed rgba(79,227,193,.5);border-radius:12px;padding:12px;font-size:14px}
+.result svg{flex:none}
+
+/* pains */
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;display:grid;gap:8px;align-content:start;min-width:0;transition:transform .5s var(--ease),border-color .3s var(--ease)}
+.card:hover{transform:translateY(-3px);border-color:#34497a}
+.card .lab{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.card p{color:var(--muted);font-size:15px}
+
+/* tagline */
+.tagline{padding-block:120px 40px}
+.tagline p{font-family:var(--display);font-weight:500;font-size:clamp(28px,4.6vw,48px);line-height:1.25;letter-spacing:-.01em;max-width:860px}
+.tagline .w{color:rgba(243,245,250,.28);transition:color .6s var(--ease)}
+.tagline .w.on{color:var(--fg)}
+.tagline .w.hlw.on{color:var(--accent)}
+
+/* stories */
+.stories{display:grid;gap:16px}
+.story{display:grid;grid-template-columns:72px minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px}
+.story .n{font-family:var(--display);font-size:30px;line-height:1;color:var(--accent)}
+.story h3{margin-bottom:4px}
+.story .who{font-size:14px;color:var(--dim)}
+.story .res{font-size:15px;color:var(--muted)}
+.story .res b{color:var(--mint);font-weight:600}
+.note{margin-top:16px;font-size:14px;color:var(--dim);max-width:720px}
+
+/* how */
+.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;counter-reset:s}
+.how .card{position:relative;padding-top:56px}
+.how .card::before{counter-increment:s;content:counter(s);position:absolute;top:20px;left:24px;width:28px;height:28px;border-radius:50%;background:var(--mint);color:var(--on-accent);font-weight:600;font-size:14px;display:grid;place-items:center}
+.vs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:16px}
+.vs .card:last-child{border-color:rgba(79,227,193,.45);background:linear-gradient(135deg,rgba(79,227,193,.10),rgba(79,227,193,.02))}
+.vs .card:last-child .lab{color:var(--mint)}
+
+/* test */
+.test{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:center;background:linear-gradient(135deg,rgba(255,138,61,.12),rgba(79,227,193,.08));border:1px solid rgba(255,138,61,.4);border-radius:28px;padding:48px}
+.test .t{display:grid;gap:16px}
+.test svg{width:100%;max-width:260px;justify-self:center}
+.scan .sweep{transform-origin:110px 110px;animation:spin 5s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* author */
+.author{display:grid;grid-template-columns:240px minmax(0,1fr);gap:48px;align-items:start}
+.author img{width:240px;height:240px;border-radius:50%;object-fit:cover;border:3px solid var(--line)}
+.author .t{display:grid;gap:16px}
+.certs{display:flex;flex-wrap:wrap;gap:8px}
+.certs span{font-size:14px;color:var(--mint);background:rgba(79,227,193,.08);border:1px solid rgba(79,227,193,.3);border-radius:999px;padding:4px 12px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px}
+.stat b{display:block;font-family:var(--display);font-weight:600;font-size:30px;line-height:1.2;color:var(--accent);font-variant-numeric:tabular-nums}
+.stat small{font-size:14px;color:var(--dim)}
+.np{border-radius:20px;padding:24px;background:linear-gradient(135deg,rgba(255,138,61,.14),rgba(255,138,61,.03));border:1px solid rgba(255,138,61,.45);display:grid;gap:8px}
+.np .lab{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+
+/* reviews */
+.revs{columns:3 300px;column-gap:16px}
+.rev{break-inside:avoid;margin-bottom:16px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;display:grid;gap:12px}
+.rev p{font-size:15px}
+.rev p b{color:var(--accent);font-weight:500}
+.rev .who{font-weight:600;font-size:14px}
+.rev .who small{display:block;font-weight:400;color:var(--dim)}
+
+/* next */
+.next{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:48px}
+.next ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.next li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;font-size:15px;color:var(--muted)}
+.next li::before{content:"";width:10px;height:10px;margin-top:8px;border-radius:50%;background:var(--mint)}
+.big10{font-family:var(--display);font-weight:600;font-size:60px;line-height:1;color:var(--mint)}
+
+/* faq */
+.faq{display:grid;gap:12px;max-width:820px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:0 24px;transition:border-color .3s var(--ease)}
+details[open]{border-color:#34497a}
+summary{cursor:pointer;list-style:none;padding:20px 0;font-weight:600;font-size:17px;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--mint);font-size:22px;line-height:1;transition:transform .5s var(--ease)}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding-bottom:20px;color:var(--muted)}
+
+/* final */
+.final{text-align:center;display:grid;justify-items:center;gap:24px;padding-block:96px}
+.final h2{max-width:760px}
+.final .lead{max-width:600px}
+footer{border-top:1px solid var(--line);padding-block:32px 48px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:14px;color:var(--dim)}
+footer a{color:var(--muted)}
+
+/* reveal */
+.pre{opacity:0;transform:translateY(32px)}
+.rv{transition:opacity .7s var(--ease),transform .7s var(--ease)}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr);gap:40px;padding-top:40px}
+  .grid3,.how{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .story{grid-template-columns:48px minmax(0,1fr)}
+  .story .res{grid-column:2}
+  .test,.next{grid-template-columns:minmax(0,1fr);padding:32px}
+  .author{grid-template-columns:minmax(0,1fr);gap:24px}
+  .author img{width:160px;height:160px}
+}
+@media (max-width:760px){
+  .links,.nav .bar>.btn{display:none}
+  .menu-btn{display:block}
+  .nav .bar{width:100%;justify-content:space-between;padding:6px 6px 6px 16px}
+}
+@media (max-width:560px){
+  section{padding-top:64px}
+  .grid3,.how,.vs{grid-template-columns:minmax(0,1fr)}
+  .stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .stat{padding:12px}.stat b{font-size:24px}
+  .test,.next{padding:24px;border-radius:24px}
+  .btn{width:100%}
+  .hero-cta{display:grid}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:opacity .3s linear!important}
+  .pre{transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Перейти к содержанию</a>
+
+<header class="nav">
+  <div class="bar">
+    <a class="brand" href="#top" aria-label="ИИ в работе менеджера — наверх">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><polygon points="16,4 27.4,12.3 23,25.7 9,25.7 4.6,12.3" fill="none" stroke="#ff8a3d" stroke-width="2.4" stroke-linejoin="round"/><circle cx="16" cy="16" r="3.2" fill="#4fe3c1"/></svg>
+      ИИ в работе менеджера
+    </a>
+    <nav class="links" aria-label="Разделы">
+      <a href="#program">Что покажу</a>
+      <a href="#author">Кто ведёт</a>
+      <a href="#test">Тест</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <a class="btn sm js-signup" href="https://t.me/ecmen11" target="_blank" rel="noopener">Записаться</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="panel" aria-label="Открыть меню"><i></i><i></i><i></i></button>
+  </div>
+</header>
+<div class="panel" id="panel" hidden>
+  <a href="#program">Что покажу</a>
+  <a href="#author">Кто ведёт</a>
+  <a href="#test">Пройти тест</a>
+  <a href="#faq">Вопросы</a>
+  <a href="https://t.me/ecmen11" class="js-signup" target="_blank" rel="noopener" style="color:var(--accent)">Записаться →</a>
+</div>
+
+<main id="main">
+<div class="wrap" id="top">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="h1">
+    <div class="hero-text">
+      <div class="kicker">Бесплатный онлайн-воркшоп · 2 часа · Zoom</div>
+      <h1 id="h1">Что ИИ уже может сделать <span class="hl">за менеджера</span></h1>
+      <p class="lead">Без технических подробностей: какие задачи ИИ уже снимает, как это выглядит на живом предприятии и с чего начать в понедельник.</p>
+      <div class="hero-cta">
+        <a class="btn js-signup" href="https://t.me/ecmen11" target="_blank" rel="noopener">Записаться на бесплатный воркшоп</a>
+        <a class="tlink" href="checkup/">или проверьте свой уровень за 5 минут</a>
+      </div>
+      <div class="proof">
+        <span class="chip"><span class="d"></span><span>Ведёт гендиректор компании на <b>1500+</b> сотрудников</span></span>
+        <span class="chip"><b>24</b> ИИ-ассистента в работе</span>
+      </div>
+    </div>
+
+    <div class="agent" aria-label="Пример: агент готовит отчёт по поручениям">
+      <div class="top"><span>агент:~/поручения</span><span>● работает</span></div>
+      <div class="say"><small>Вы говорите голосом</small>«Сверь поручения с наступившим сроком с карточками и собери отчёт со светофором нарушений».</div>
+      <div class="steps">
+        <div class="st"><span class="ic">✓</span><span>Открыл 150 протоколов и карточек</span><span class="tag">готово</span></div>
+        <div class="st"><span class="ic">✓</span><span>Сверил сроки и статусы</span><span class="tag">готово</span></div>
+        <div class="st run"><span class="ic"></span><span>Собираю отчёт по исполнению</span><span class="tag">в работе</span></div>
+      </div>
+      <div class="result">
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h10l6 6v10H4z" fill="none" stroke="#4fe3c1" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" fill="none" stroke="#4fe3c1" stroke-width="1.6"/><path d="M8 14h8M8 17h5" stroke="#4fe3c1" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span>Отчёт ляжет в вашу папку к началу недели. Вам остаётся проверить и принять решение.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAINS -->
+  <section aria-labelledby="pains">
+    <div class="head rv">
+      <div class="kicker">Знакомо?</div>
+      <h2 id="pains">Куда уходит <span class="hl">день менеджера</span></h2>
+    </div>
+    <div class="grid3">
+      <div class="card rv"><span class="lab">Документы</span><h3>Собрать, свести, переписать</h3><p>Регламенты, инструкции, справки. Половина времени уходит на то, чтобы найти и склеить куски.</p></div>
+      <div class="card rv"><span class="lab">Контроль</span><h3>Проверить, кто что сделал</h3><p>Поручения, сроки, статусы. Чем больше людей, тем больше ручных сверок.</p></div>
+      <div class="card rv"><span class="lab">Совещания</span><h3>Записать и не потерять</h3><p>Протоколы и договорённости. Через неделю никто не помнит, что решили и кто отвечает.</p></div>
+      <div class="card rv"><span class="lab">Отчёты</span><h3>Собрать цифры к сроку</h3><p>Данные из разных систем, сводные таблицы, пояснения. Каждый месяц одно и то же.</p></div>
+      <div class="card rv"><span class="lab">Люди</span><h3>Ввести новичка в курс дела</h3><p>Одни и те же объяснения по кругу. Новичок путается, наставник устаёт.</p></div>
+      <div class="card rv"><span class="lab">Решения</span><h3>Разобраться и не ошибиться</h3><p>Информации много, времени мало. Решение часто принимается «на глаз».</p></div>
+    </div>
+  </section>
+
+  <!-- TAGLINE -->
+  <section class="tagline" aria-label="Главная мысль">
+    <p id="tag">Компании нельзя «продать» ИИ. Можно решить задачу конкретного человека и помочь ему стать успешнее.</p>
+  </section>
+
+  <!-- STORIES -->
+  <section id="program" aria-labelledby="stories">
+    <div class="head rv">
+      <div class="kicker">Программа · 2 часа</div>
+      <h2 id="stories">Пять историй <span class="hl">с живого предприятия</span></h2>
+      <p class="lead">В каждой конкретный человек и его конкретная проблема. Показываю, как было, что сделал ИИ и что получилось.</p>
+    </div>
+    <div class="stories">
+      <article class="story rv"><div class="n">01</div><div><h3>Контроль поручений</h3><div class="who">Руководитель и исполнители</div></div><p class="res">Агент сверяет около <b>150 протоколов в неделю</b>. Отчёт со светофором нарушений готов к началу недели, а по выполненным поручениям уже стоят встречи в календаре.</p></article>
+      <article class="story rv"><div class="n">02</div><div><h3>Совещания и разговоры с клиентами</h3><div class="who">Руководители и клиентские службы</div></div><p class="res">Протокол совещания приходит на почту, а каждый разговор с клиентом оценивается по стандартам, а не по случайной выборке.</p></article>
+      <article class="story rv"><div class="n">03</div><div><h3>Новый сотрудник в курсе дела</h3><div class="who">Новички, наставники, HR</div></div><p class="res">Из разрозненных приказов собран единый регламент, по нему обучение и портал. Уход новичков в первые 1–2 месяца снизился <b>с 50% до 20%</b>.</p></article>
+      <article class="story rv"><div class="n">04</div><div><h3>Виртуальный сотрудник в каждом отделе</h3><div class="who">Экономисты, HR, технические службы</div></div><p class="res">Помощник знает правила отдела. Новичок получает ответ сразу, опытный специалист экономит часы.</p></article>
+      <article class="story rv"><div class="n">05</div><div><h3>Встречи линейных руководителей</h3><div class="who">Руководство и филиалы</div></div><p class="res">Сводка по всем филиалам собирается сама. Раньше на неё уходила <b>неделя ручной работы</b>.</p></article>
+    </div>
+    <p class="note rv">Ещё покажу, как из одного документа сделать обучение в пяти форматах, как за 10–20 минут получить исследование уровня эксперта и как агент помогает принять взвешенное решение. Результат по адаптации получен после перестройки всей системы, не только за счёт ИИ.</p>
+  </section>
+
+  <!-- HOW -->
+  <section aria-labelledby="how">
+    <div class="head rv">
+      <div class="kicker">За последний год</div>
+      <h2 id="how">От справочника <span class="hl">к сотруднику</span></h2>
+    </div>
+    <div class="vs">
+      <div class="card rv"><span class="lab">Было: чат</span><h3>Задаёте вопрос, получаете ответ</h3><p>Дальше всё делаете сами: копируете, проверяете, переделываете.</p></div>
+      <div class="card rv"><span class="lab">Стало: агент</span><h3>Даёте материалы и ставите задачу</h3><p>Агент сам открывает файлы, собирает документ, сводит таблицу и кладёт результат в папку.</p></div>
+    </div>
+    <div class="how">
+      <div class="card rv"><h3>Показываете, где лежат материалы</h3><p>Папка с документами, таблицы, записи совещаний. Ничего не нужно переносить и копировать.</p></div>
+      <div class="card rv"><h3>Говорите голосом, что сделать</h3><p>Как объясняли бы новому сотруднику: что получить, по каким правилам и куда положить.</p></div>
+      <div class="card rv"><h3>Забираете результат</h3><p>Документ, отчёт или таблица ждут в вашей папке. Вы проверяете и принимаете решение.</p></div>
+    </div>
+  </section>
+
+  <!-- TEST -->
+  <section id="test" aria-labelledby="testh">
+    <div class="test rv">
+      <div class="t">
+        <div class="kicker">Самопроверка</div>
+        <h2 id="testh">Насколько вы готовы <span class="hl">работать с ИИ?</span></h2>
+        <p class="muted">13 вопросов, до 5 минут. В конце диаграмма по пяти направлениям: постановка задач, агенты, большая работа, безопасность и рынок труда. Ответы никуда не отправляются.</p>
+        <div><a class="btn ghost" href="checkup/">Пройти тест</a></div>
+      </div>
+      <svg class="scan" viewBox="0 0 220 220" aria-hidden="true">
+        <defs>
+          <linearGradient id="sw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4fe3c1" stop-opacity="0"/><stop offset="1" stop-color="#4fe3c1" stop-opacity=".5"/></linearGradient>
+          <linearGradient id="sf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a3d" stop-opacity=".45"/><stop offset="1" stop-color="#4fe3c1" stop-opacity=".35"/></linearGradient>
+        </defs>
+        <g fill="none" stroke="#2c3d66">
+          <polygon points="110,82 136.6,101.3 126.5,132.7 93.5,132.7 83.4,101.3"/>
+          <polygon points="110,58 159.5,94 140.6,152.1 79.4,152.1 60.5,94"/>
+          <polygon points="110,34 182.3,86.5 154.7,171.5 65.3,171.5 37.7,86.5"/>
+          <polygon points="110,14 201.3,80.3 166.4,187.7 53.6,187.7 18.7,80.3"/>
+          <path d="M110 110L110 14M110 110L201.3 80.3M110 110L166.4 187.7M110 110L53.6 187.7M110 110L18.7 80.3"/>
+        </g>
+        <polygon points="110,43 162,93 140,152 87,141 55,92" fill="url(#sf)" stroke="#ff8a3d" stroke-width="2" stroke-linejoin="round"/>
+        <g class="sweep"><path d="M110 110 L206 110 A96 96 0 0 0 189.2 55.8 Z" fill="url(#sw)"/><line x1="110" y1="110" x2="206" y2="110" stroke="#4fe3c1" stroke-width="1.5"/></g>
+        <g fill="#0c1528" stroke="#ffd166" stroke-width="2"><circle cx="110" cy="43" r="4"/><circle cx="162" cy="93" r="4"/><circle cx="140" cy="152" r="4"/><circle cx="87" cy="141" r="4"/><circle cx="55" cy="92" r="4"/></g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- AUTHOR -->
+  <section id="author" aria-labelledby="authorh">
+    <div class="author">
+      <img class="rv" src="author.jpg" alt="Александр Мартынов" width="240" height="240" loading="lazy">
+      <div class="t">
+        <div class="kicker rv">Кто ведёт</div>
+        <h2 id="authorh" class="rv">Александр Мартынов</h2>
+        <div class="certs rv"><span>Сертифицированный HR-бизнес-партнёр (AIHR)</span><span>Эксперт по клиентоцентричности</span><span>Преподаватель курса по клиентскому опыту</span></div>
+        <p class="muted rv">Генеральный директор компании, в которой больше 1500 сотрудников и 6 филиалов. Руковожу командами с 2002 года, два MBA: РАНХиГС и РГУ им. Губкина. Все примеры на воркшопе взяты из работы моей компании.</p>
+        <div class="stats rv">
+          <div class="stat"><b>20+</b><small>лет в управлении</small></div>
+          <div class="stat"><b>1500+</b><small>сотрудников</small></div>
+          <div class="stat"><b>24</b><small>ИИ-ассистента в работе</small></div>
+        </div>
+        <div class="np rv"><span class="lab">Я не программист</span><p>Всё, что я покажу, сделано обычным пользователем ИИ. Если получилось у меня, получится и у вас. А там, где без программиста не обойтись, я так и скажу.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section aria-labelledby="revh">
+    <div class="head rv">
+      <div class="kicker">Отзывы после прошлых воркшопов</div>
+      <h2 id="revh">Что говорят <span class="hl">участники</span></h2>
+    </div>
+    <div class="revs">
+      <div class="rev rv"><p>«Сделано с такой душой и такими глубокими знаниями, что <b>сразу хочется бежать и применять всё на практике</b>. Очень структурированно, с примерами и разбором кейсов.»</p><div class="who">Евгения<small>Директор по клиентскому опыту, крупная розничная сеть (Москва)</small></div></div>
+      <div class="rev rv"><p>«Тема востребована. У Александра прекрасно получается подать информацию доступным языком, <b>можно сразу нести в работу</b>. Ценно, что он делится реальными практиками применения ИИ у себя в компании.»</p><div class="who">Лидия<small>IT-специалист (Москва)</small></div></div>
+      <div class="rev rv"><p>«На работе нам дали платный доступ в ChatGPT и сказали «пользуйтесь», <b>а как — не объяснили</b>. Решила дождаться воркшопа и убедилась, что решение было правильным.»</p><div class="who">Ольга</div></div>
+      <div class="rev rv"><p>«<b>На 100% практично и применимо</b>: не только теория, но и инструкции, как этим пользоваться.»</p><div class="who">Константин<small>Фаундер бизнеса</small></div></div>
+      <div class="rev rv"><p>«<b>Сразу комплексные решения</b>, а не отдельные инструменты для узких задач. Рекомендую!»</p><div class="who">Ирина<small>Эксперт по NPS</small></div></div>
+      <div class="rev rv"><p>«Поняла, что я в числе тех 85% пользователей, которые используют ИИ обывательски. Для многих практическое применение ИИ кажется далёким будущим, а <b>для вас это реальность</b>.»</p><div class="who">Екатерина</div></div>
+    </div>
+  </section>
+
+  <!-- NEXT -->
+  <section aria-labelledby="nexth">
+    <div class="next rv">
+      <div style="display:grid;gap:16px">
+        <div class="kicker">Для тех, кто хочет дальше</div>
+        <h2 id="nexth">Практический воркшоп <span class="hl">«ИИ в работе менеджера: от чата к агентам»</span></h2>
+        <p class="muted">После бесплатного воркшопа можно пойти дальше. До уровня уверенного пользователя — до 10 часов практики на реальных рабочих задачах, без программирования. Подробности расскажу в конце бесплатного воркшопа.</p>
+        <div class="big10">≤ 10 ч</div>
+      </div>
+      <ul>
+        <li>Как поручать ИИ работу целиком, а не только задавать вопросы</li>
+        <li>Агенты: работа с вашими файлами и папками</li>
+        <li>Большая работа целиком: от груды документов до регламента, прототипа и задания для программиста</li>
+        <li>Свой помощник на навыке для работы и для себя</li>
+        <li>Безопасность, проверка ответов и готовый регламент использования ИИ</li>
+        <li>Свой сайт: от идеи до ссылки</li>
+        <li>Месяц сопровождения после занятий</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" aria-labelledby="faqh">
+    <div class="head rv">
+      <div class="kicker">Вопросы</div>
+      <h2 id="faqh">Частые <span class="hl">вопросы</span></h2>
+    </div>
+    <div class="faq">
+      <details class="rv"><summary>Сколько стоит участие?</summary><p>Бесплатно. Нужно только записаться, чтобы получить ссылку на Zoom.</p></details>
+      <details class="rv"><summary>Когда ближайший воркшоп?</summary><p>Воркшопы проходят регулярно. Напишите в Telegram, и мы пришлём ближайшую дату и ссылку на Zoom.</p></details>
+      <details class="rv"><summary>Нужно ли что-то устанавливать или покупать?</summary><p>Нет. Достаточно зайти в Zoom с компьютера или телефона. Я показываю всё на экране.</p></details>
+      <details class="rv"><summary>Я не технарь. Мне будет понятно?</summary><p>Да. Воркшоп для менеджеров любого уровня, которые с ИИ пока на «вы». Никакого кода и технических подробностей. Главный навык здесь не технический: умение объяснить задачу, которое у хорошего менеджера уже есть.</p></details>
+      <details class="rv"><summary>Подойдёт ли это для моей сферы?</summary><p>Примеры взяты из работы большого предприятия: документы, контроль, совещания, отчёты, обучение, решения. Эти задачи есть у руководителя в любой отрасли.</p></details>
+      <details class="rv"><summary>Это продажа под видом обучения?</summary><p>Нет. Два часа полезного содержания, которое можно применять сразу. В конце я коротко расскажу о практическом воркшопе для тех, кто хочет дальше. Решать вам.</p></details>
+      <details class="rv"><summary>Безопасно ли давать ИИ рабочие данные?</summary><p>На воркшопе отдельно разберём, какие данные можно давать ИИ, а какие нельзя, и какие действия потом не отменишь.</p></details>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section class="final" aria-labelledby="finalh">
+    <div class="kicker">Бесплатно · 2 часа · Zoom</div>
+    <h2 id="finalh">Два часа, после которых понятно, <span class="hl">с чего начать</span></h2>
+    <p class="lead">Напишите в Telegram «Хочу на воркшоп». Пришлём ближайшую дату и ссылку на Zoom.</p>
+    <a class="btn js-signup" href="https://t.me/ecmen11" target="_blank" rel="noopener">Записаться на бесплатный воркшоп</a>
+  </section>
+
+  <footer>
+    <span>Александр Мартынов, 2026</span>
+    <span>Вопросы: <a href="https://t.me/ecmen11" target="_blank" rel="noopener">@ecmen11</a> в Telegram</span>
+    <!-- TODO: ссылка на политику обработки персональных данных, когда появится форма записи -->
+  </footer>
+</div>
+</main>
+
+<script>
+(function(){
+  /* ---------- НАСТРОЙКИ ----------
+     SIGNUP_URL — куда ведут кнопки «Записаться». Сейчас Telegram.
+     Когда появится Яндекс Форма, вставьте её адрес: метка канала (?src=...) передастся в форму автоматически. */
+  var SIGNUP_URL = 'https://t.me/ecmen11';
+  var FORM_PARAM = 'src';
+
+  var src='';
+  try{ var q=new URLSearchParams(location.search); src=(q.get('src')||q.get('utm_source')||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40); }catch(e){}
+  var href=SIGNUP_URL;
+  if(src && SIGNUP_URL.indexOf('t.me/')===-1){ try{ var u=new URL(SIGNUP_URL); u.searchParams.set(FORM_PARAM,src); href=u.toString(); }catch(e){} }
+  document.querySelectorAll('.js-signup').forEach(function(a){ a.href=href; });
+
+  /* mobile menu */
+  var btn=document.querySelector('.menu-btn'), panel=document.getElementById('panel');
+  function setMenu(open){
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    btn.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню');
+    if(open){ panel.hidden=false; var links=panel.querySelectorAll('a'); links.forEach(function(a,i){ a.style.transitionDelay=Math.min(i*60,340)+'ms'; }); requestAnimationFrame(function(){ panel.classList.add('open'); }); document.body.style.overflow='hidden'; }
+    else { panel.classList.remove('open'); panel.hidden=true; document.body.style.overflow=''; }
+  }
+  btn.addEventListener('click',function(){ setMenu(btn.getAttribute('aria-expanded')!=='true'); });
+  panel.addEventListener('click',function(e){ if(e.target.tagName==='A') setMenu(false); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') setMenu(false); });
+
+  var reduce=false; try{ reduce=matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+
+  /* scroll reveals: only elements below the first screen start hidden */
+  if('IntersectionObserver' in window){
+    var vh=innerHeight;
+    var io=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.remove('pre'); io.unobserve(en.target); } }); },{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rv').forEach(function(el){ if(el.getBoundingClientRect().top>vh){ el.classList.add('pre'); io.observe(el); } });
+
+    /* tagline: words light up one by one */
+    var tag=document.getElementById('tag');
+    var words=tag.textContent.trim().split(/\s+/);
+    tag.innerHTML=words.map(function(w,i){ return '<span class="w'+(i<4?'':' hlw')+'">'+w+'</span>'; }).join(' ');
+    var ws=tag.querySelectorAll('.w');
+    if(reduce){ ws.forEach(function(w){ w.classList.add('on'); }); }
+    else {
+      var wo=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('on'); wo.unobserve(en.target); } }); },{rootMargin:'0px 0px -38% 0px'});
+      ws.forEach(function(w,i){ w.style.transitionDelay=(i%4)*70+'ms'; wo.observe(w); });
+    }
+
+    /* current section in nav */
+    var navLinks=document.querySelectorAll('.links a');
+    var so=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ navLinks.forEach(function(a){ a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id); }); } }); },{rootMargin:'-45% 0px -50% 0px'});
+    ['program','author','test','faq'].forEach(function(id){ var s=document.getElementById(id); if(s) so.observe(s); });
+  } else {
+    document.querySelectorAll('#tag').forEach(function(t){ t.style.color='var(--fg)'; });
+  }
+})();
+</script>
+</body>
+</html>

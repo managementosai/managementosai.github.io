@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ИИ-чекап менеджера</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<!-- Превью для Telegram и соцсетей -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Насколько вы готовы работать с ИИ?">
+<meta property="og:description" content="Самопроверка для менеджеров: 13 вопросов, до 5 минут, результат диаграммой.">
+<meta property="og:image" content="https://managementosai.github.io/checkup/preview.jpg">
+<meta property="og:url" content="https://managementosai.github.io/checkup/">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="13 вопросов, до 5 минут: проверьте, что вы знаете и умеете в работе с ИИ, и получите результат в виде диаграммы.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: one rounded card per screen on a dark navy field with two soft glows (orange + mint); result = radar, bars, facts */
+:root{
+  --bg:#0c1528; --surface:#141f38; --surface2:#1a2744; --line:#25345a;
+  --fg:#f3f5fa; --muted:#b5c0d6; --dim:#7d89a3;
+  --accent:#ff8a3d; --mint:#4fe3c1; --sun:#ffd166; --rose:#ff7a85; --on-accent:#141016;
+  --display:"Unbounded","Golos Text",system-ui,sans-serif;
+  --body:"Golos Text",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:16px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background-color:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(60vmax 45vmax at 105% -10%,rgba(255,138,61,.22),transparent 60%),radial-gradient(55vmax 45vmax at -15% 110%,rgba(79,227,193,.16),transparent 60%),radial-gradient(rgba(181,192,214,.08) 1px,transparent 1.2px);
+  background-size:auto,auto,24px 24px;background-attachment:fixed,fixed,scroll}
+.wrap{max-width:780px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;color:var(--dim);margin-bottom:14px}
+.top .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mint);margin-right:8px;box-shadow:0 0 0 4px rgba(79,227,193,.15)}
+.top .tag{color:var(--accent);letter-spacing:.1em;text-transform:uppercase}
+.card{background:linear-gradient(180deg,rgba(26,39,68,.92),rgba(20,31,56,.92));border:1px solid var(--line);border-radius:22px;padding:clamp(20px,4vw,36px);box-shadow:0 20px 60px rgba(0,0,0,.28)}
+.screen{display:grid;gap:22px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mint)}
+h1{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(26px,5.4vw,40px);line-height:1.18;letter-spacing:-.01em;text-wrap:balance}
+h1 .hl{background:linear-gradient(90deg,var(--accent),#ffb36b 55%,var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{margin:0;font-family:var(--display);font-weight:500;font-size:clamp(19px,3.4vw,25px);line-height:1.3;text-wrap:balance}
+h2 .hl{color:var(--accent)}
+p{margin:0}
+.muted{color:var(--muted)}
+.dim{color:var(--dim);font-size:14px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:24px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:14px;color:var(--muted)}
+.chip b{color:var(--fg);font-weight:600}
+.btn{appearance:none;font:inherit;font-weight:600;cursor:pointer;display:inline-flex;justify-content:center;text-align:center;line-height:1.3;align-items:center;gap:8px;text-decoration:none;background:linear-gradient(90deg,var(--accent),#ffa25c);color:var(--on-accent);border:0;border-radius:999px;padding:14px 26px;font-size:16px;box-shadow:0 8px 24px rgba(255,138,61,.28);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(255,138,61,.38)}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line);box-shadow:none}
+.btn.ghost:hover{border-color:var(--mint);color:var(--mint)}
+.btn:focus-visible,.opt:focus-visible,.link:focus-visible{outline:2px solid var(--mint);outline-offset:3px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+
+.progress{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;color:var(--dim)}
+.segs{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;margin-top:10px}
+.segs i{height:5px;border-radius:3px;background:var(--line)}
+.segs i.done{background:var(--mint)}
+.segs i.now{background:var(--accent)}
+.axhead{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.axhead svg{width:22px;height:22px;flex:none}
+.qtype{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--on-accent);background:var(--mint);border-radius:6px;padding:3px 8px;margin-bottom:12px}
+.opts{display:grid;gap:10px}
+.opt{appearance:none;font:inherit;text-align:left;cursor:pointer;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:grid;grid-template-columns:14px minmax(0,1fr);gap:14px;align-items:center;transition:border-color .12s,background .12s,transform .12s}
+.opt:hover{border-color:var(--mint);transform:translateX(2px)}
+.opt .lv{width:14px;height:14px;border-radius:50%;border:2px solid var(--c);background:transparent}
+.opt.sel{background:var(--surface2);border-color:var(--c)}
+.opt.sel .lv{background:var(--c)}
+.opt[disabled]{cursor:default;transform:none}
+.fb{border-radius:var(--r);background:rgba(79,227,193,.09);border:1px solid rgba(79,227,193,.35);padding:14px 18px;display:grid;gap:4px}
+.fb small{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mint)}
+.nav{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.link{appearance:none;background:none;border:0;font:inherit;color:var(--dim);cursor:pointer;padding:6px 0;text-decoration:underline;text-underline-offset:3px}
+.link:hover{color:var(--fg)}
+
+.score{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:center}
+.big{font-family:var(--display);font-weight:600;font-size:clamp(52px,11vw,76px);line-height:1;background:linear-gradient(90deg,var(--accent),var(--sun));-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.big small{font-size:.42em}
+.level{font-family:var(--display);font-weight:500;font-size:22px}
+.risk{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px;background:color-mix(in srgb,var(--c) 16%,transparent);color:var(--c)}
+.risk::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c)}
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:8px}
+.chart svg{display:block;width:100%;height:auto;max-width:560px;margin:0 auto}
+.bars{display:grid;gap:12px}
+.b{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr) 46px;gap:12px;align-items:center;font-size:15px}
+.b .t{height:10px;border-radius:5px;background:var(--line);overflow:hidden}
+.b .t i{display:block;height:100%;border-radius:5px}
+.b .v{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;display:grid;gap:6px;min-width:0}
+.box.warm{background:linear-gradient(135deg,rgba(255,138,61,.14),rgba(255,138,61,.04));border-color:rgba(255,138,61,.45)}
+.box.mint{background:linear-gradient(135deg,rgba(79,227,193,.12),rgba(79,227,193,.03));border-color:rgba(79,227,193,.4)}
+.box h3{margin:0;font-family:var(--mono);font-size:11.5px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.box.mint h3{color:var(--mint)}
+.grow{display:grid;gap:10px}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;display:grid;gap:6px;min-width:0}
+.fact b{font-family:var(--display);font-weight:600;font-size:28px;line-height:1.1;color:var(--mint);font-variant-numeric:tabular-nums}
+.fact p{font-size:14.5px;color:var(--muted)}
+.fact .src{font-size:12px;color:var(--dim)}
+.copied{font-size:14px;color:var(--mint)}
+textarea.sum{width:100%;min-height:96px;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:12px;font:inherit;font-size:14px;padding:10px}
+.foot{margin-top:16px;text-align:center;font-size:13px;color:var(--dim)}
+
+.scan{width:100%;max-width:220px;justify-self:center}
+.scan .sweep{transform-origin:110px 110px;animation:spin 5s linear infinite}
+.scan .blip{animation:blip 5s ease-in-out infinite}
+.scan .blip:nth-of-type(2){animation-delay:1s}.scan .blip:nth-of-type(3){animation-delay:2s}.scan .blip:nth-of-type(4){animation-delay:3s}.scan .blip:nth-of-type(5){animation-delay:4s}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes blip{0%,100%{opacity:.45;r:3.5}12%{opacity:1;r:5}}
+.grow-in{animation:growIn .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes growIn{from{transform:scale(.15)}to{transform:scale(1)}}
+.screen{animation:fadeUp .3s ease-out}
+@keyframes fadeUp{from{transform:translateY(8px)}to{transform:none}}
+
+.path{display:grid;gap:14px}
+.ptrack{position:relative;height:12px;border-radius:6px;background:linear-gradient(90deg,rgba(255,122,133,.55) 0 30%,rgba(255,209,102,.55) 30% 55%,rgba(255,209,102,.8) 55% 80%,rgba(79,227,193,.8) 80% 100%);margin:34px 0 30px}
+.pmark{position:absolute;top:50%;width:22px;height:22px;border-radius:50%;transform:translate(-50%,-50%);border:3px solid var(--bg)}
+.pmark.you{background:var(--accent);box-shadow:0 0 0 4px rgba(255,138,61,.3)}
+.pmark.goal{background:var(--mint);box-shadow:0 0 0 4px rgba(79,227,193,.3)}
+.plab{position:absolute;transform:translateX(-50%);font-size:13px;white-space:nowrap;font-weight:600}
+.plab.edge{transform:translateX(-85%)}
+.plab.you{bottom:22px;color:var(--accent)}
+.plab.goal{top:22px;color:var(--mint)}
+.pzones{display:grid;grid-template-columns:30fr 25fr 25fr 20fr;font-size:11.5px;line-height:1.3;color:var(--dim);text-align:center}
+.pzones span{padding:0 2px}
+.parrow{position:absolute;top:50%;height:3px;transform:translateY(-50%);background:repeating-linear-gradient(90deg,var(--fg) 0 6px,transparent 6px 11px);opacity:.75}
+.hours{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hours>b{font-family:var(--display);font-weight:600;font-size:34px;line-height:1;color:var(--mint)}
+@media (max-width:640px){.hero{grid-template-columns:minmax(0,1fr)}.scan{max-width:160px;grid-row:1}}
+@media (max-width:560px){
+  .facts{grid-template-columns:minmax(0,1fr)}
+  .b{grid-template-columns:minmax(0,1fr) 46px}
+  .b .t{grid-column:1/-1;grid-row:2}
+  .score{grid-template-columns:minmax(0,1fr)}
+  .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span><span class="dot"></span>чекап:~/ии-навыки</span><span class="tag">Самопроверка</span></div>
+  <div class="card"><main id="app" aria-live="polite"></main></div>
+  <div class="foot">Ответы остаются только у вас в браузере и никуда не отправляются.</div>
+</div>
+
+<script>
+(function(){
+/* ---------- НАСТРОЙКИ ----------
+   SIGNUP_URL — ссылка на страницу записи на бесплатный воркшоп (главная страница сайта).
+   Если пусто — кнопка ведёт в Telegram @ecmen11. */
+var SIGNUP_URL = '../';
+var FALLBACK_URL = 'https://t.me/ecmen11';
+var WORKSHOP_NAME = '«ИИ в работе менеджера: от чата к агентам»';
+
+var AXES = [
+  {id:'A', name:'Постановка задач', full:'Ставлю ИИ задачи',
+   tip:'На воркшопе разберём, почему ИИ отвечает «водой», семь вопросов к задаче и как объяснить ИИ задачу голосом.'},
+  {id:'B', name:'Агенты', full:'Агенты и помощники',
+   tip:'На воркшопе разберём, как поручать агентам работу с вашими файлами, проводить глубокие исследования и собрать своего помощника.'},
+  {id:'C', name:'Большая работа', full:'Большая работа целиком',
+   tip:'На воркшопе пройдём один сквозной пример: от оценки процессов и груды документов до регламента, прототипа, задания для программиста и учебных материалов. А ещё — как без программиста сделать и опубликовать свой сайт или портал.'},
+  {id:'D', name:'Безопасность', full:'Безопасность и проверка',
+   tip:'На воркшопе разберём, какие данные можно давать ИИ и как проверять его ответы. Плюс готовый регламент использования ИИ.'},
+  {id:'E', name:'Рынок труда', full:'Ценность на рынке труда',
+   tip:'После воркшопа у вас будут конкретные примеры применения ИИ, которые можно показать руководителю или на собеседовании.'}
+];
+
+/* Шкалы ответов по типу вопроса: [текст, баллы 0–3] */
+var SCALE = {
+  know:[['Да, знаю и могу объяснить другому',3],['Примерно представляю',1],['Нет',0]],
+  can:[['Да, делаю это регулярно',3],['Пробовал(а) пару раз',2],['Знаю, что так можно, но не пробовал(а)',1],['Нет',0]],
+  able:[['Да, хоть сейчас',3],['Да, но с трудом',1],['Нет',0]]
+};
+var TYPE = {know:'Знаете ли вы…', can:'Умеете ли вы…', able:'Можете ли вы…', check:'Проверьте себя'};
+
+/* t — тип вопроса, ins — что показать, если ответ не максимальный, always — показывать всегда */
+var Q = [
+  {ax:'A', t:'know', q:'Знаете ли вы, почему ИИ иногда отвечает «водой» — и на какие семь вопросов ответить себе, чтобы с первого раза получить приемлемый результат?',
+   ins:'Почти все сталкиваются с этим в первые недели. Причина почти никогда не в самой нейросети — и это быстро исправляется.'},
+  {ax:'B', t:'check', q:'Чем ИИ-агент отличается от обычного чата с нейросетью?',
+   o:[['Ничем, это одно и то же',0],['Агент просто умнее и быстрее отвечает',1],['Агенту можно поручить работу целиком: он сам открывает файлы, выполняет шаги и кладёт результат в папку',3],['Агент — это чат-бот на сайте компании',0]],
+   ins:'Агенты — главное изменение в ИИ за последний год. Именно они позволяют поручать ИИ работу, а не только задавать вопросы.'},
+  {ax:'A', t:'can', q:'Умеете ли вы надиктовать ИИ задачу голосом — с контекстом, правилами и тем, каким должен быть результат?',
+   ins:'Голосовой ввод есть во всех популярных ИИ-сервисах. Весь вопрос в том, что именно надиктовать, чтобы ИИ понял задачу.'},
+  {ax:'A', t:'check', q:'Вы просите ИИ: «Подготовь отчёт по итогам квартала». Ответ получается общим и бесполезным. Что поможет больше всего?',
+   o:[['Начать с фразы «Ты лучший в мире аналитик»',1],['Попросить вежливее',0],['Рассказать контекст: откуда брать данные, для кого отчёт, что в нём должно быть',3],['Спросить другую нейросеть',0]],
+   ins:'Качество ответа ИИ зависит от постановки задачи сильнее, чем от выбора нейросети. У хорошей постановки есть понятная структура.'},
+  {ax:'B', t:'can', q:'Умеете ли вы поручить ИИ работу с вашими файлами — чтобы он сам открыл документы, свёл данные и положил готовый отчёт в папку?',
+   ins:'Сегодня ИИ умеет работать прямо с вашими документами и таблицами, без копирования текста в чат.'},
+  {ax:'C', t:'able', q:'Можете ли вы оценить бизнес-процессы вашей компании: где ИИ даст реальную экономию времени и денег, а где автоматизация не нужна?',
+   ins:'Начинать стоит не с технологии, а с задачи конкретного человека: где больше всего ручных сверок и повторяющейся работы. У такой оценки есть простой порядок действий.'},
+  {ax:'C', t:'able', q:'Можете ли вы с помощью ИИ превратить груду разрозненных приказов, памяток и инструкций в один понятный регламент?',
+   ins:'Разрозненные документы — самая частая причина, почему автоматизация не взлетает. С ИИ навести порядок можно быстрее, чем кажется.'},
+  {ax:'D', t:'check', q:'Что из этого можно без опаски отправить в публичный ИИ-сервис?',
+   o:[['Таблицу с персональными данными клиентов или сотрудников',0],['Договор с контрагентом целиком',0],['Обезличенный регламент или шаблон документа',3],['Всё что угодно, если подписка платная',0]],
+   ins:'Ошибка здесь стоит дороже всего: данные, отправленные во внешний сервис, уже не вернуть.'},
+  {ax:'B', t:'able', q:'Можете ли вы собрать своего ИИ-помощника с ролью, базой знаний и инструкцией — для работы или для себя, например по физическому и ментальному здоровью с опорой на международные клинические рекомендации?',
+   ins:'Свой помощник собирается без программирования. Помощник по здоровью не заменяет врача: он помогает понять ситуацию и подготовиться к визиту. Медицинские данные — только в личном аккаунте.'},
+  {ax:'B', t:'able', q:'Можете ли вы провести с ИИ глубокое исследование по рабочему вопросу и за 10–20 минут получить разбор уровня эксперта со ссылками на источники?',
+   ins:'Режим глубокого исследования сам находит и читает сотни источников и сравнивает их. Важно правильно поставить вопрос и знать, что проверить перед решением.'},
+  {ax:'C', t:'able', q:'Можете ли вы сами, без программиста, сделать с ИИ прототип системы и задание для ИТ — или создать и опубликовать свой сайт, лендинг или портал?',
+   ins:'За последний год граница между работой менеджера и программиста сильно сдвинулась. Сайт или прототип сегодня делается своими словами, а правки вносятся за минуты.'},
+  {ax:'D', t:'can', q:'Умеете ли вы проверять ответы ИИ, чтобы не попасться на правдоподобную ошибку?',
+   ins:'ИИ ошибается очень уверенно. Проверка ответов — отдельный навык, и у него есть простые правила.'},
+  {ax:'E', t:'know', always:true, q:'Знаете ли вы, как за год изменилось число вакансий в России, где требуют навыки работы с ИИ?',
+   ins:'По данным hh.ru, в I квартале 2026 года таких вакансий было больше 16 000 — в 2,7 раза больше, чем годом раньше. Работодатели всё чаще просят не рассказать, а показать, что вы делаете с помощью ИИ.'}
+];
+
+function opts(q){ return q.o || SCALE[q.t]; }
+
+var FACTS = [
+  {n:'×2,7', t:'Вакансий с требованием навыков ИИ в России в I квартале 2026 года — больше 16 000, в 2,7 раза больше, чем годом раньше.', s:'hh.ru, Sber Pro', u:'https://sber.pro/publication/spros-na-spetsialistov-s-navikami-raboti-s-ii-sredi-rabotodatelei-viros-pochti-v-3-raza/'},
+  {n:'~2%', t:'Такие вакансии пока занимают около 2% рынка, хотя за три года их доля выросла в 2,4 раза. Сейчас навык ещё выделяет вас среди других кандидатов.', s:'hh.ru, EANews', u:'https://www.eanews.ru/rossiya/20260706143957/v-rossii-v-pyat-raz-vyroslo-chislo-vakansiy-s-trebovaniem-navykov-raboty-s-ii'},
+  {n:'66%', t:'Руководителей в мире не готовы нанимать сотрудника без навыков ИИ.', s:'Microsoft и LinkedIn, Work Trend Index 2024', u:'https://news.microsoft.com/source/2024/05/08/microsoft-and-linkedin-release-the-2024-work-trend-index-on-the-state-of-ai-at-work/'},
+  {n:'~40%', t:'Навыков, которые нужны в работе, изменится к 2030 году. Быстрее всего растёт спрос на навыки ИИ и работы с данными.', s:'Всемирный экономический форум, Future of Jobs 2025', u:'https://www.eco-business.com/press-releases/future-of-jobs-report-2025-78-million-new-jobs-by-2030-but-urgent-upskilling-needed-to-prepare-workforces'}
+];
+
+var LEVELS = [
+  {max:30, name:'Наблюдатель', risk:'Высокий риск на рынке труда', col:'var(--rose)',
+   text:'Вы видите, что ИИ меняет работу, но пока смотрите со стороны. Требование навыков ИИ в вакансиях растёт быстро. Сейчас таких вакансий ещё немного — это окно, когда навык выделяет вас, а не просто считается обязательным.'},
+  {max:55, name:'Пользователь чата', risk:'Заметный риск на рынке труда', col:'var(--sun)',
+   text:'Вы уже пробуете ИИ, но в основном как поисковик: вопрос — ответ. Главный рост дальше: поручать ИИ работу целиком и встроить его в свои ежедневные задачи.'},
+  {max:80, name:'Уверенный пользователь', risk:'Умеренный риск на рынке труда', col:'var(--sun)',
+   text:'Хорошая база. Чтобы перейти на следующий уровень, нужна система: агенты, свои помощники под каждую задачу и большая работа целиком — от документов до готового результата.'},
+  {max:101, name:'Практик', risk:'Низкий риск на рынке труда', col:'var(--mint)',
+   text:'Вы впереди большинства. Практический воркшоп поможет превратить личный опыт в систему для всей команды: регламенты, помощники, обучение.'}
+];
+
+var app=document.getElementById('app');
+function fresh(){ return {i:-1, ans:new Array(Q.length).fill(null), shown:new Array(Q.length).fill(false)}; }
+var state=fresh();
+
+function el(html){ var d=document.createElement('div'); d.innerHTML=html; return d; }
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+function axis(id){ for(var i=0;i<AXES.length;i++) if(AXES[i].id===id) return AXES[i]; }
+function signupUrl(){ if(!SIGNUP_URL) return FALLBACK_URL; return SIGNUP_URL+(SIGNUP_URL.indexOf('?')>-1?'&':'?')+'src=checkup'; }
+function lvColor(pts){ return pts===3?'var(--mint)':(pts>=1?'var(--sun)':'var(--dim)'); }
+
+function render(){ app.innerHTML=''; if(state.i<0) return renderStart(); if(state.i>=Q.length) return renderResult(); renderQ(); }
+
+function renderStart(){
+  app.appendChild(el(
+   '<section class="screen">'+
+    '<div class="hero"><div style="display:grid;gap:18px;min-width:0">'+
+      '<div class="kicker">Самопроверка для менеджеров</div>'+
+      '<h1>Насколько вы готовы <span class="hl">работать с ИИ?</span></h1>'+
+      '<p class="muted">Вакансий с требованием навыков ИИ в России за год стало в 2,7 раза больше. Проверьте честно: что вы уже знаете, умеете и можете, а чего работодатель может не досчитаться.</p>'+
+    '</div>'+scanSvg()+'</div>'+
+    '<div class="chips"><span class="chip"><b>'+Q.length+'</b> вопросов</span><span class="chip">до <b>5 минут</b></span><span class="chip">результат <b>диаграммой</b></span></div>'+
+    '<div class="row"><button class="btn" id="go">Начать проверку →</button></div>'+
+    '<p class="dim">Отвечайте как есть, а не как хотелось бы. Здесь нет правильных и неправильных ответов — только ваша точка на карте.</p>'+
+   '</section>'));
+  document.getElementById('go').onclick=function(){ state.i=0; render(); };
+}
+
+function renderQ(){
+  var k=state.i, q=Q[k], a=axis(q.ax), sc=opts(q), chosen=state.ans[k], showFb=state.shown[k];
+  var segs=''; for(var s=0;s<Q.length;s++) segs+='<i class="'+(s<k?'done':(s===k?'now':''))+'"></i>';
+  var html='<section class="screen">'+
+    '<div><div class="progress"><span>Вопрос '+(k+1)+' из '+Q.length+'</span><span class="axhead">'+mini(q.ax)+esc(a.full)+'</span></div><div class="segs">'+segs+'</div></div>'+
+    '<div><span class="qtype">'+TYPE[q.t]+'</span><h2>'+esc(q.q)+'</h2></div><div class="opts">';
+  for(var j=0;j<sc.length;j++){
+    html+='<button class="opt'+(chosen===j?' sel':'')+'" data-j="'+j+'" style="--c:'+(q.t==='check'?'var(--accent)':lvColor(sc[j][1]))+'"'+(showFb?' disabled':'')+'><span class="lv"></span><span>'+esc(sc[j][0])+'</span></button>';
+  }
+  html+='</div>';
+  if(showFb) html+='<div class="fb"><small>Справка</small><p>'+esc(q.ins)+'</p></div>';
+  html+='<div class="nav"><button class="link" id="back">'+(k===0?'В начало':'Назад')+'</button>'+
+        (showFb?'<button class="btn" id="next">'+(k===Q.length-1?'Показать результат →':'Дальше →')+'</button>':'')+'</div></section>';
+  app.appendChild(el(html));
+  var btns=app.querySelectorAll('.opt');
+  for(var b=0;b<btns.length;b++){
+    btns[b].onclick=function(){
+      var j=+this.getAttribute('data-j'); state.ans[k]=j;
+      if(q.always || sc[j][1]<3){ state.shown[k]=true; render(); }
+      else { render(); setTimeout(function(){ state.i=k+1; render(); },240); }
+    };
+  }
+  document.getElementById('back').onclick=function(){ state.shown[k]=false; state.i=k-1; if(state.i>=0) state.shown[state.i]=false; render(); };
+  var nx=document.getElementById('next'); if(nx){ nx.onclick=function(){ state.i=k+1; render(); }; nx.focus(); }
+}
+
+function scores(){
+  var res={}; AXES.forEach(function(a){ res[a.id]={sum:0,max:0}; });
+  Q.forEach(function(q,k){ var r=res[q.ax]; r.max+=3; if(state.ans[k]!==null) r.sum+=opts(q)[state.ans[k]][1]; });
+  var out=AXES.map(function(a){ var r=res[a.id]; return {a:a, pct:r.max?Math.round(r.sum/r.max*100):0}; });
+  return {axes:out,total:Math.round(out.reduce(function(s,x){return s+x.pct;},0)/out.length)};
+}
+function levelFor(t){ for(var i=0;i<LEVELS.length;i++) if(t<LEVELS[i].max) return LEVELS[i]; return LEVELS[LEVELS.length-1]; }
+function barCol(p){ return p<35?'var(--rose)':(p<70?'var(--sun)':'var(--mint)'); }
+
+function penta(cx,cy,r){ var a=[]; for(var i=0;i<5;i++){ var g=-Math.PI/2+i*2*Math.PI/5; a.push([cx+r*Math.cos(g), cy+r*Math.sin(g)]); } return a; }
+function ptsStr(a){ return a.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' '); }
+
+function radar(axes){
+  var W=580,H=440,cx=290,cy=225,R=135,n=axes.length,svg='<defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a3d" stop-opacity=".55"/><stop offset="1" stop-color="#4fe3c1" stop-opacity=".45"/></linearGradient></defs>';
+  function pt(i,r){ var g=-Math.PI/2+i*2*Math.PI/n; return [cx+r*Math.cos(g), cy+r*Math.sin(g)]; }
+  [25,50,75,100].forEach(function(lv){ svg+='<polygon points="'+ptsStr(penta(cx,cy,R*lv/100))+'" fill="none" stroke="#25345a" stroke-width="1"/>'; });
+  svg+='<polygon points="'+ptsStr(penta(cx,cy,R*0.55))+'" fill="none" stroke="#4fe3c1" stroke-opacity=".7" stroke-width="1.2" stroke-dasharray="5 5"/>';
+  for(var i=0;i<n;i++){ var e=pt(i,R); svg+='<line x1="'+cx+'" y1="'+cy+'" x2="'+e[0].toFixed(1)+'" y2="'+e[1].toFixed(1)+'" stroke="#25345a"/>'; }
+  var lp=pt(0,R*0.55); svg+='<text x="'+(lp[0]+8)+'" y="'+(lp[1]-4)+'" fill="#4fe3c1" fill-opacity=".85" font-size="13" font-family="Golos Text,system-ui,sans-serif">55% — уверенный уровень</text>';
+  var up=axes.map(function(x,i){ return pt(i,R*Math.max(x.pct,4)/100); });
+  svg+='<g class="grow-in" style="transform-origin:'+cx+'px '+cy+'px;transform-box:view-box"><polygon points="'+ptsStr(up)+'" fill="url(#rg)" stroke="#ff8a3d" stroke-width="2.5" stroke-linejoin="round"/>';
+  up.forEach(function(p){ svg+='<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="5" fill="#0c1528" stroke="#ffd166" stroke-width="2.5"/>'; });
+  svg+='</g>';
+  axes.forEach(function(x,i){
+    var p=pt(i,R+32), anchor='middle';
+    if(p[0]<cx-20) anchor='end'; else if(p[0]>cx+20) anchor='start';
+    var dy=p[1]<cy-R?-4:(p[1]>cy+R/2?12:4);
+    svg+='<text x="'+p[0].toFixed(1)+'" y="'+(p[1]+dy).toFixed(1)+'" text-anchor="'+anchor+'" fill="#f3f5fa" font-size="17" font-weight="500" font-family="Golos Text,system-ui,sans-serif">'+esc(x.a.name)+'</text>';
+    svg+='<text x="'+p[0].toFixed(1)+'" y="'+(p[1]+dy+21).toFixed(1)+'" text-anchor="'+anchor+'" fill="#ff8a3d" font-size="17" font-weight="600" font-family="Golos Text,system-ui,sans-serif">'+x.pct+'%</text>';
+  });
+  return '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Диаграмма навыков работы с ИИ по пяти направлениям">'+svg+'</svg>';
+}
+
+function renderResult(){
+  var s=scores(), lv=levelFor(s.total);
+  var sorted=s.axes.slice().sort(function(a,b){return a.pct-b.pct;});
+  var weak=sorted.slice(0,2), strong=sorted[sorted.length-1];
+  var html='<section class="screen">'+
+    '<div class="kicker">Ваш результат</div>'+
+    '<div class="score"><div class="big"><span id="num">'+s.total+'</span><small>%</small></div>'+
+    '<div><div class="level">'+esc(lv.name)+'</div><span class="risk" style="--c:'+lv.col+'">'+esc(lv.risk)+'</span></div></div>'+
+    '<p class="muted">'+esc(lv.text)+'</p>'+
+    pathBlock(s.total)+
+    '<div class="chart">'+radar(s.axes)+'</div>'+
+    '<div class="bars">'+s.axes.map(function(x){
+      return '<div class="b"><span>'+esc(x.a.full)+'</span><span class="t"><i style="width:'+Math.max(x.pct,3)+'%;background:'+barCol(x.pct)+'"></i></span><span class="v">'+x.pct+'%</span></div>';
+    }).join('')+'</div>'+
+    '<div class="grow">'+
+      '<div class="box mint"><h3>Сильная сторона</h3><p>'+esc(strong.a.full)+' — '+strong.pct+'%.</p></div>'+
+      weak.map(function(x){ return '<div class="box warm"><h3>Зона роста · '+esc(x.a.full)+' · '+x.pct+'%</h3><p>'+esc(x.a.tip)+'</p></div>'; }).join('')+
+    '</div>'+
+    '<h2>Что происходит <span class="hl">на рынке труда</span></h2>'+
+    '<div class="facts">'+FACTS.map(function(f){
+      return '<div class="fact"><b>'+esc(f.n)+'</b><p>'+esc(f.t)+'</p><span class="src">Источник: '+esc(f.s)+'</span></div>';
+    }).join('')+'</div>'+
+    '<div class="box warm"><h3>Что дальше</h3><p>Хотите увидеть, как всё это работает на практике? Приходите на бесплатный воркшоп: за два часа покажем на реальных примерах, что ИИ уже может сделать за менеджера и с чего начать.</p>'+
+      '<div class="row" style="margin-top:8px"><a class="btn" href="'+signupUrl()+'" rel="noopener">Записаться на бесплатный воркшоп по возможностям ИИ</a></div>'+
+    '</div>'+
+    '<div class="row"><button class="link" id="again">Пройти заново</button></div>'+
+   '</section>';
+  app.appendChild(el(html));
+  document.getElementById('again').onclick=function(){ state=fresh(); render(); };
+  window.scrollTo(0,0);
+  countUp(document.getElementById('num'), s.total);
+}
+
+function pathBlock(total){
+  var CONF=55, PRO=80, you=Math.max(2,Math.min(98,total));
+  var goal, goalName, txt, hours='';
+  if(total<CONF){
+    goal=CONF; goalName='Уверенный пользователь';
+    hours='<b>≤ 10 ч</b>';
+    txt='От вашего уровня до уверенного пользователя — <strong style="color:var(--fg);font-weight:600">до 10 часов практики</strong> на воркшопе '+WORKSHOP_NAME+'. Без программирования, на реальных рабочих задачах.';
+  } else if(total<PRO){
+    goal=PRO; goalName='Практик';
+    txt='Вы уже уверенный пользователь. Следующий шаг — уровень практика: агенты, свои помощники и большая работа целиком. Это и есть практика воркшопа '+WORKSHOP_NAME+'.';
+  } else {
+    goal=null;
+    txt='Вы на уровне практика. Воркшоп '+WORKSHOP_NAME+' поможет превратить личный опыт в систему для всей команды.';
+  }
+  var marks='';
+  if(goal!==null){
+    marks+='<span class="parrow" style="left:'+you+'%;width:'+(goal-you)+'%"></span>'+
+      '<span class="pmark goal" style="left:'+goal+'%"></span><span class="plab goal'+(goal>70?' edge':'')+'" style="left:'+goal+'%">'+goalName+'</span>';
+  }
+  marks+='<span class="pmark you" style="left:'+you+'%"></span><span class="plab you'+(you>85?' edge':'')+'" style="left:'+you+'%">Вы: '+total+'%</span>';
+  return '<div class="box mint path"><h3>Ваш путь</h3>'+
+    '<div class="ptrack">'+marks+'</div>'+
+    '<div class="pzones"><span>Наблюдатель</span><span>Пользователь чата</span><span>Уверенный</span><span>Практик</span></div>'+
+    '<div class="hours">'+hours+'<p class="muted" style="flex:1;min-width:220px">'+txt+'</p></div>'+
+  '</div>';
+}
+
+function countUp(node,target){
+  try{ if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; }catch(e){}
+  var t0=null,dur=900;
+  function step(ts){ if(!t0) t0=ts; var k=Math.min(1,(ts-t0)/dur); node.textContent=Math.round(target*(1-Math.pow(1-k,3))); if(k<1) requestAnimationFrame(step); else node.textContent=target; }
+  requestAnimationFrame(step);
+}
+
+function mini(axId){
+  var idx=0; for(var i=0;i<AXES.length;i++) if(AXES[i].id===axId) idx=i;
+  var P=penta(11,12,9), s='<svg viewBox="0 0 22 22" aria-hidden="true"><polygon points="'+ptsStr(P)+'" fill="none" stroke="#25345a" stroke-width="1.4"/>';
+  s+='<line x1="11" y1="12" x2="'+P[idx][0].toFixed(1)+'" y2="'+P[idx][1].toFixed(1)+'" stroke="#ff8a3d" stroke-width="1.6"/>';
+  s+='<circle cx="'+P[idx][0].toFixed(1)+'" cy="'+P[idx][1].toFixed(1)+'" r="2.6" fill="#ff8a3d"/></svg>';
+  return s;
+}
+
+function scanSvg(){
+  var c=110, s='<svg class="scan" viewBox="0 0 220 220" aria-hidden="true"><defs>'+
+    '<linearGradient id="sw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4fe3c1" stop-opacity="0"/><stop offset="1" stop-color="#4fe3c1" stop-opacity=".5"/></linearGradient>'+
+    '<linearGradient id="sf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a3d" stop-opacity=".35"/><stop offset="1" stop-color="#4fe3c1" stop-opacity=".25"/></linearGradient></defs>';
+  [28,52,76,96].forEach(function(r){ s+='<polygon points="'+ptsStr(penta(c,c,r))+'" fill="none" stroke="#25345a" stroke-width="1"/>'; });
+  penta(c,c,96).forEach(function(p){ s+='<line x1="'+c+'" y1="'+c+'" x2="'+p[0].toFixed(1)+'" y2="'+p[1].toFixed(1)+'" stroke="#25345a"/>'; });
+  var sample=[.7,.52,.78,.42,.6].map(function(k,i){ var g=-Math.PI/2+i*2*Math.PI/5; return [c+96*k*Math.cos(g), c+96*k*Math.sin(g)]; });
+  s+='<polygon points="'+ptsStr(sample)+'" fill="url(#sf)" stroke="#ff8a3d" stroke-opacity=".8" stroke-width="1.5" stroke-linejoin="round"/>';
+  s+='<g class="sweep"><path d="M'+c+' '+c+' L'+(c+96)+' '+c+' A96 96 0 0 0 '+(c+96*Math.cos(-0.6)).toFixed(1)+' '+(c+96*Math.sin(-0.6)).toFixed(1)+' Z" fill="url(#sw)"/>'+
+       '<line x1="'+c+'" y1="'+c+'" x2="'+(c+96)+'" y2="'+c+'" stroke="#4fe3c1" stroke-width="1.5"/></g>';
+  sample.forEach(function(p){ s+='<circle class="blip" cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="3.5" fill="#ffd166"/>'; });
+  s+='<circle cx="'+c+'" cy="'+c+'" r="3" fill="#4fe3c1"/></svg>';
+  return s;
+}
+
+render();
+})();
+</script>
+
+</body>
+</html>
