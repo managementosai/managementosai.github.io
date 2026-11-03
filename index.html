@@ -184,7 +184,7 @@ p{margin:0;text-wrap:pretty}
 .blab::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor}
 .bcol.ok .blab{color:var(--mint)}.bcol.mid .blab{color:var(--sun)}.bcol.no .blab{color:var(--rose)}
 
-.more+.more,.wide+.more,.more+.wide{margin-top:16px}
+.more+.more,.wide+.more,.more+.wide,.wide+.wide{margin-top:16px}
 .panel-x.wide{margin-bottom:0}
 .pipe{display:grid;grid-template-columns:minmax(0,1fr) 150px minmax(0,1fr);gap:24px;align-items:center}
 .pipe-col{display:grid;gap:12px;align-content:start}
@@ -238,6 +238,13 @@ p{margin:0;text-wrap:pretty}
 .mk b{font-family:var(--display);font-weight:600;font-size:34px;line-height:1.1;color:var(--accent);font-variant-numeric:tabular-nums}
 .mk a{font-size:12px;color:var(--dim);text-decoration:underline;text-underline-offset:3px}
 .mk a:hover{color:var(--mint)}
+
+.health{border-color:rgba(255,122,133,.35);background:linear-gradient(135deg,rgba(255,122,133,.07),var(--surface) 50%)}
+.health .px-big.ico{background:rgba(255,122,133,.08);border-color:rgba(255,122,133,.35)}
+.bonus{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--rose);border:1px solid rgba(255,122,133,.4);border-radius:999px;padding:2px 10px;margin-bottom:8px}
+.hl3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.hl3 div{display:grid;gap:4px;align-content:start;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:13px;color:var(--dim);line-height:1.45}
+.hl3 b{font-size:15px;color:var(--fg)}
 
 /* how */
 .how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;counter-reset:s}
@@ -367,7 +374,7 @@ footer a{color:var(--muted)}
   .px-head{grid-template-columns:minmax(0,1fr)}.px-big{justify-self:start;grid-auto-flow:column;align-items:baseline;gap:8px;padding:8px 14px}
   .flow{grid-template-columns:minmax(0,1fr);gap:16px}.src{grid-auto-flow:column;justify-content:start}.src::after{display:none}
   .outs{padding-left:18px}.outs::before{left:0}.outs li::before{left:-18px}
-  .pains,.terms,.skill{grid-template-columns:minmax(0,1fr)}
+  .pains,.terms,.skill,.hl3{grid-template-columns:minmax(0,1fr)}
   .chain{grid-template-columns:minmax(0,1fr)}.chain li{grid-template-columns:26px minmax(0,1fr);column-gap:12px}.chain .dn{grid-row:span 2;margin:0}
   .mk-facts{grid-template-columns:minmax(0,1fr);gap:16px}.mk{grid-template-columns:auto minmax(0,1fr);column-gap:16px;align-items:baseline}.mk b{font-size:28px;grid-row:span 2}
   .proof li{border-right:0!important;border-bottom:1px solid var(--line)!important}.proof li:last-child{border-bottom:0!important}
@@ -585,6 +592,19 @@ footer a{color:var(--muted)}
         <p class="px-note">Ключевые цифры перед решением всё равно стоит открыть и проверить самому.</p>
       </article>
     </div>
+    <article class="panel-x wide health rv">
+      <div class="px-head">
+        <div class="px-big ico"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ff7a85" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6.3 5.3 5.3 0 0 1 21.3 12C19 16.6 12 21 12 21z"/><path d="M7 12h3l1.5-2.5L13.5 15l1.5-3h2"/></svg><small>для себя</small></div>
+        <div><span class="bonus">Бонус</span><h3>Личный помощник по здоровью</h3><p>Тот же подход, только для себя. Помощник знает ваш контекст: анализы, выписки, назначения. Он опирается на международные клинические рекомендации, а не на случайные статьи из интернета.</p></div>
+      </div>
+      <div class="hl3">
+        <div><b>Готовит к визиту к врачу</b><span>хронология, анализы в динамике и список вопросов, которые стоит задать</span></div>
+        <div><b>Объясняет простым языком</b><span>что означают показатели и назначения, с опорой на ваши данные</span></div>
+        <div><b>Помогает со вторым мнением</b><span>какие варианты предусматривают клинические рекомендации для вашей ситуации</span></div>
+      </div>
+      <p class="px-note">Не ставит диагноз и не заменяет врача: помогает прийти на приём подготовленным. Какие медицинские данные можно доверить ИИ и как их обезличить, разберём отдельно.</p>
+    </article>
+
   </section>
 
   <!-- TAGLINE -->
