@@ -103,7 +103,7 @@ p{margin:0}
 .box h3{margin:0;font-family:var(--mono);font-size:11.5px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 .box.mint h3{color:var(--mint)}
 .grow{display:grid;gap:10px}
-.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .fact{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;display:grid;gap:6px;min-width:0}
 .fact b{font-family:var(--display);font-weight:600;font-size:28px;line-height:1.1;color:var(--mint);font-variant-numeric:tabular-nums}
 .fact p{font-size:14.5px;color:var(--muted)}
@@ -229,14 +229,13 @@ function opts(q){ return q.o || SCALE[q.t]; }
 
 var FACTS = [
   {n:'×2,7', t:'Вакансий с требованием навыков ИИ в России в I квартале 2026 года — больше 16 000, в 2,7 раза больше, чем годом раньше.', s:'hh.ru, Sber Pro', u:'https://sber.pro/publication/spros-na-spetsialistov-s-navikami-raboti-s-ii-sredi-rabotodatelei-viros-pochti-v-3-raza/'},
-  {n:'~2%', t:'Такие вакансии пока занимают около 2% рынка, хотя за три года их доля выросла в 2,4 раза. Сейчас навык ещё выделяет вас среди других кандидатов.', s:'hh.ru, EANews', u:'https://www.eanews.ru/rossiya/20260706143957/v-rossii-v-pyat-raz-vyroslo-chislo-vakansiy-s-trebovaniem-navykov-raboty-s-ii'},
   {n:'66%', t:'Руководителей в мире не готовы нанимать сотрудника без навыков ИИ.', s:'Microsoft и LinkedIn, Work Trend Index 2024', u:'https://news.microsoft.com/source/2024/05/08/microsoft-and-linkedin-release-the-2024-work-trend-index-on-the-state-of-ai-at-work/'},
   {n:'~40%', t:'Навыков, которые нужны в работе, изменится к 2030 году. Быстрее всего растёт спрос на навыки ИИ и работы с данными.', s:'Всемирный экономический форум, Future of Jobs 2025', u:'https://www.eco-business.com/press-releases/future-of-jobs-report-2025-78-million-new-jobs-by-2030-but-urgent-upskilling-needed-to-prepare-workforces'}
 ];
 
 var LEVELS = [
   {max:30, name:'Наблюдатель', risk:'Высокий риск на рынке труда', col:'var(--rose)',
-   text:'Вы видите, что ИИ меняет работу, но пока смотрите со стороны. Требование навыков ИИ в вакансиях растёт быстро. Сейчас таких вакансий ещё немного — это окно, когда навык выделяет вас, а не просто считается обязательным.'},
+   text:'Вы видите, что ИИ меняет работу, но пока смотрите со стороны. Требование навыков ИИ в вакансиях растёт быстро. Пока этот навык выделяет вас среди других кандидатов, но скоро станет обязательным.'},
   {max:55, name:'Пользователь чата', risk:'Заметный риск на рынке труда', col:'var(--sun)',
    text:'Вы уже пробуете ИИ, но в основном как поисковик: вопрос — ответ. Главный рост дальше: поручать ИИ работу целиком и встроить его в свои ежедневные задачи.'},
   {max:80, name:'Уверенный пользователь', risk:'Умеренный риск на рынке труда', col:'var(--sun)',
